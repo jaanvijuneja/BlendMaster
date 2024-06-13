@@ -1,0 +1,40 @@
+﻿@model BlendMaster.Models.CartViewModel
+
+@{
+    ViewBag.Title = "Shopping Cart";
+}
+
+<link rel="stylesheet" href="~/css/styles.css">
+
+<h2>Shopping Cart for Table @Model.TableId</h2>
+
+@if (Model.Items.Count == 0)
+{
+    <p>Your cart is empty.</p>
+}
+else
+{
+    <table>
+        <tr>
+            <th>Wine Name</th>
+            <th>Quantity</th>
+            <th>Price</th>
+            <th>Total</th>
+        </tr>
+        @foreach (var item in Model.Items)
+        {
+            <tr>
+                <td>@item.WineName</td>
+                <td>@item.Quantity</td>
+                <td>@item.Price</td>
+                <td>@item.Total</td>
+            </tr>
+        }
+    </table>
+
+    <h3>Total: @Model.TotalPrice</h3>
+
+    <form asp-action="Checkout" method="post">
+        <button type="submit">Checkout</button>
+    </form>
+}

@@ -1,0 +1,24 @@
+﻿@model IEnumerable<BlendMaster.Entities.Table>
+
+@{
+    ViewBag.Title = "Select Table";
+}
+
+<link rel="stylesheet" href="~/css/styles.css">
+
+<h2>Select Table</h2>
+
+<form asp-action="SelectTable" method="post">
+    <div>
+        <label for="tableId">Table:</label>
+        <select id="tableId" name="tableId">
+            @foreach (var table in Model)
+            {
+                <option value="@table.TableId">@table.TableName</option>
+            }
+        </select>
+    </div>
+    <div>
+        <button type="submit">Select</button>
+    </div>
+</form>

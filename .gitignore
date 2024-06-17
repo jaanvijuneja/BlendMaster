@@ -12,3 +12,5 @@ appsettings.Development.json
 
 # Application configuration
 appsettings.json
+
+.vs/

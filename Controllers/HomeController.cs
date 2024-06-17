@@ -93,7 +93,7 @@ namespace BlendMaster.Controllers
             HttpContext.Session.SetObjectAsJson("Cart", cart);
             Console.WriteLine($"TableId in AddToCart: {cart.TableId}");
             var quantity = cart.Items.FirstOrDefault(i => i.WineId == wineId)?.Quantity ?? 0;
-            return Json(new { success = true, quantity = quantity });
+            return RedirectToAction("Index");
         }
 
         [HttpPost]
@@ -122,7 +122,7 @@ namespace BlendMaster.Controllers
             HttpContext.Session.SetObjectAsJson("Cart", cart);
             Console.WriteLine($"TableId in RemoveFromCart: {cart.TableId}");
             var quantity = cart.Items.FirstOrDefault(i => i.WineId == wineId)?.Quantity ?? 0;
-            return Json(new { success = true, quantity = quantity });
+            return RedirectToAction("Index");
         }
 
         public IActionResult Cart()

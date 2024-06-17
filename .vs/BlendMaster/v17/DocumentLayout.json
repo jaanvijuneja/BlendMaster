@@ -1,90 +1,26 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\15562\\Desktop\\BlendMaster-v1\\",
+  "WorkspaceRootPath": "C:\\Users\\user\\BlendMaster\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{281A17E3-C387-499A-B49D-4617A91CB039}|BlendMaster.csproj|c:\\users\\15562\\desktop\\blendmaster-v1\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{281A17E3-C387-499A-B49D-4617A91CB039}|BlendMaster.csproj|solutionrelative:views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{281A17E3-C387-499A-B49D-4617A91CB039}|BlendMaster.csproj|c:\\users\\15562\\desktop\\blendmaster-v1\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{281A17E3-C387-499A-B49D-4617A91CB039}|BlendMaster.csproj|c:\\users\\user\\blendmaster\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{281A17E3-C387-499A-B49D-4617A91CB039}|BlendMaster.csproj|solutionrelative:controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{281A17E3-C387-499A-B49D-4617A91CB039}|BlendMaster.csproj|c:\\users\\15562\\desktop\\blendmaster-v1\\helpers\\sessionextensions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{281A17E3-C387-499A-B49D-4617A91CB039}|BlendMaster.csproj|solutionrelative:helpers\\sessionextensions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{281A17E3-C387-499A-B49D-4617A91CB039}|BlendMaster.csproj|c:\\users\\15562\\desktop\\blendmaster-v1\\views\\home\\orderconfirmation.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{281A17E3-C387-499A-B49D-4617A91CB039}|BlendMaster.csproj|solutionrelative:views\\home\\orderconfirmation.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{281A17E3-C387-499A-B49D-4617A91CB039}|BlendMaster.csproj|c:\\users\\15562\\desktop\\blendmaster-v1\\views\\home\\cart.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "AbsoluteMoniker": "D:0:0:{281A17E3-C387-499A-B49D-4617A91CB039}|BlendMaster.csproj|c:\\users\\user\\blendmaster\\views\\home\\cart.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{281A17E3-C387-499A-B49D-4617A91CB039}|BlendMaster.csproj|solutionrelative:views\\home\\cart.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{281A17E3-C387-499A-B49D-4617A91CB039}|BlendMaster.csproj|c:\\users\\15562\\desktop\\blendmaster-v1\\views\\home\\error.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{281A17E3-C387-499A-B49D-4617A91CB039}|BlendMaster.csproj|solutionrelative:views\\home\\error.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{281A17E3-C387-499A-B49D-4617A91CB039}|BlendMaster.csproj|c:\\users\\user\\blendmaster\\views\\home\\orderconfirmation.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{281A17E3-C387-499A-B49D-4617A91CB039}|BlendMaster.csproj|solutionrelative:views\\home\\orderconfirmation.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{281A17E3-C387-499A-B49D-4617A91CB039}|BlendMaster.csproj|c:\\users\\15562\\desktop\\blendmaster-v1\\views\\home\\selecttable.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "AbsoluteMoniker": "D:0:0:{281A17E3-C387-499A-B49D-4617A91CB039}|BlendMaster.csproj|c:\\users\\user\\blendmaster\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{281A17E3-C387-499A-B49D-4617A91CB039}|BlendMaster.csproj|solutionrelative:views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{281A17E3-C387-499A-B49D-4617A91CB039}|BlendMaster.csproj|c:\\users\\user\\blendmaster\\views\\home\\selecttable.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{281A17E3-C387-499A-B49D-4617A91CB039}|BlendMaster.csproj|solutionrelative:views\\home\\selecttable.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{281A17E3-C387-499A-B49D-4617A91CB039}|BlendMaster.csproj|c:\\users\\15562\\desktop\\blendmaster-v1\\views\\home\\privacy.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{281A17E3-C387-499A-B49D-4617A91CB039}|BlendMaster.csproj|solutionrelative:views\\home\\privacy.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{281A17E3-C387-499A-B49D-4617A91CB039}|BlendMaster.csproj|c:\\users\\15562\\desktop\\blendmaster-v1\\services\\wineservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{281A17E3-C387-499A-B49D-4617A91CB039}|BlendMaster.csproj|solutionrelative:services\\wineservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{281A17E3-C387-499A-B49D-4617A91CB039}|BlendMaster.csproj|c:\\users\\15562\\desktop\\blendmaster-v1\\services\\tableservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{281A17E3-C387-499A-B49D-4617A91CB039}|BlendMaster.csproj|solutionrelative:services\\tableservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{281A17E3-C387-499A-B49D-4617A91CB039}|BlendMaster.csproj|c:\\users\\15562\\desktop\\blendmaster-v1\\services\\categoryservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{281A17E3-C387-499A-B49D-4617A91CB039}|BlendMaster.csproj|solutionrelative:services\\categoryservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{281A17E3-C387-499A-B49D-4617A91CB039}|BlendMaster.csproj|c:\\users\\15562\\desktop\\blendmaster-v1\\services\\cartservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{281A17E3-C387-499A-B49D-4617A91CB039}|BlendMaster.csproj|solutionrelative:services\\cartservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{281A17E3-C387-499A-B49D-4617A91CB039}|BlendMaster.csproj|c:\\users\\15562\\desktop\\blendmaster-v1\\models\\errorviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{281A17E3-C387-499A-B49D-4617A91CB039}|BlendMaster.csproj|solutionrelative:models\\errorviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{281A17E3-C387-499A-B49D-4617A91CB039}|BlendMaster.csproj|c:\\users\\15562\\desktop\\blendmaster-v1\\models\\cartviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{281A17E3-C387-499A-B49D-4617A91CB039}|BlendMaster.csproj|solutionrelative:models\\cartviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{281A17E3-C387-499A-B49D-4617A91CB039}|BlendMaster.csproj|c:\\users\\15562\\desktop\\blendmaster-v1\\models\\cartitemviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{281A17E3-C387-499A-B49D-4617A91CB039}|BlendMaster.csproj|solutionrelative:models\\cartitemviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{281A17E3-C387-499A-B49D-4617A91CB039}|BlendMaster.csproj|c:\\users\\15562\\desktop\\blendmaster-v1\\entities\\wine.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{281A17E3-C387-499A-B49D-4617A91CB039}|BlendMaster.csproj|solutionrelative:entities\\wine.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{281A17E3-C387-499A-B49D-4617A91CB039}|BlendMaster.csproj|c:\\users\\15562\\desktop\\blendmaster-v1\\entities\\table.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{281A17E3-C387-499A-B49D-4617A91CB039}|BlendMaster.csproj|solutionrelative:entities\\table.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{281A17E3-C387-499A-B49D-4617A91CB039}|BlendMaster.csproj|c:\\users\\15562\\desktop\\blendmaster-v1\\entities\\orderdetail.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{281A17E3-C387-499A-B49D-4617A91CB039}|BlendMaster.csproj|solutionrelative:entities\\orderdetail.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{281A17E3-C387-499A-B49D-4617A91CB039}|BlendMaster.csproj|c:\\users\\15562\\desktop\\blendmaster-v1\\entities\\order.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{281A17E3-C387-499A-B49D-4617A91CB039}|BlendMaster.csproj|solutionrelative:entities\\order.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{281A17E3-C387-499A-B49D-4617A91CB039}|BlendMaster.csproj|c:\\users\\15562\\desktop\\blendmaster-v1\\entities\\endbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{281A17E3-C387-499A-B49D-4617A91CB039}|BlendMaster.csproj|solutionrelative:entities\\endbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{281A17E3-C387-499A-B49D-4617A91CB039}|BlendMaster.csproj|c:\\users\\15562\\desktop\\blendmaster-v1\\entities\\category.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{281A17E3-C387-499A-B49D-4617A91CB039}|BlendMaster.csproj|solutionrelative:entities\\category.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -94,266 +30,72 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 5,
           "Children": [
             {
               "$type": "Bookmark",
-              "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "OrderConfirmation.cshtml",
-              "DocumentMoniker": "C:\\Users\\15562\\Desktop\\BlendMaster-v1\\Views\\Home\\OrderConfirmation.cshtml",
-              "RelativeDocumentMoniker": "Views\\Home\\OrderConfirmation.cshtml",
-              "ToolTip": "C:\\Users\\15562\\Desktop\\BlendMaster-v1\\Views\\Home\\OrderConfirmation.cshtml",
-              "RelativeToolTip": "Views\\Home\\OrderConfirmation.cshtml",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAsAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-06-13T05:55:07.095Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "Index.cshtml",
-              "DocumentMoniker": "C:\\Users\\15562\\Desktop\\BlendMaster-v1\\Views\\Home\\Index.cshtml",
-              "RelativeDocumentMoniker": "Views\\Home\\Index.cshtml",
-              "ToolTip": "C:\\Users\\15562\\Desktop\\BlendMaster-v1\\Views\\Home\\Index.cshtml",
-              "RelativeToolTip": "Views\\Home\\Index.cshtml",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABsAAAAFAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-06-13T05:55:04.28Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "Error.cshtml",
-              "DocumentMoniker": "C:\\Users\\15562\\Desktop\\BlendMaster-v1\\Views\\Home\\Error.cshtml",
-              "RelativeDocumentMoniker": "Views\\Home\\Error.cshtml",
-              "ToolTip": "C:\\Users\\15562\\Desktop\\BlendMaster-v1\\Views\\Home\\Error.cshtml",
-              "RelativeToolTip": "Views\\Home\\Error.cshtml",
-              "ViewState": "AQIAAAAAAAAAAAAAAADwvwAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-06-13T05:55:02.889Z"
+              "Name": "ST:0:0:{aa2115a1-9712-457b-9047-dbb71ca2cdd2}"
             },
             {
               "$type": "Document",
               "DocumentIndex": 4,
-              "Title": "Cart.cshtml",
-              "DocumentMoniker": "C:\\Users\\15562\\Desktop\\BlendMaster-v1\\Views\\Home\\Cart.cshtml",
-              "RelativeDocumentMoniker": "Views\\Home\\Cart.cshtml",
-              "ToolTip": "C:\\Users\\15562\\Desktop\\BlendMaster-v1\\Views\\Home\\Cart.cshtml",
-              "RelativeToolTip": "Views\\Home\\Cart.cshtml",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAACgAAAAAAAAA",
+              "Title": "SelectTable.cshtml",
+              "DocumentMoniker": "C:\\Users\\user\\BlendMaster\\Views\\Home\\SelectTable.cshtml",
+              "RelativeDocumentMoniker": "Views\\Home\\SelectTable.cshtml",
+              "ToolTip": "C:\\Users\\user\\BlendMaster\\Views\\Home\\SelectTable.cshtml",
+              "RelativeToolTip": "Views\\Home\\SelectTable.cshtml",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-06-13T05:55:01.718Z"
+              "WhenOpened": "2024-06-16T23:54:20.956Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "WineService.cs",
-              "DocumentMoniker": "C:\\Users\\15562\\Desktop\\BlendMaster-v1\\Services\\WineService.cs",
-              "RelativeDocumentMoniker": "Services\\WineService.cs",
-              "ToolTip": "C:\\Users\\15562\\Desktop\\BlendMaster-v1\\Services\\WineService.cs",
-              "RelativeToolTip": "Services\\WineService.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAADwvwAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-13T05:54:55.243Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 9,
-              "Title": "TableService.cs",
-              "DocumentMoniker": "C:\\Users\\15562\\Desktop\\BlendMaster-v1\\Services\\TableService.cs",
-              "RelativeDocumentMoniker": "Services\\TableService.cs",
-              "ToolTip": "C:\\Users\\15562\\Desktop\\BlendMaster-v1\\Services\\TableService.cs",
-              "RelativeToolTip": "Services\\TableService.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAADwvxUAAAAoAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-13T05:54:33.812Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 10,
-              "Title": "CategoryService.cs",
-              "DocumentMoniker": "C:\\Users\\15562\\Desktop\\BlendMaster-v1\\Services\\CategoryService.cs",
-              "RelativeDocumentMoniker": "Services\\CategoryService.cs",
-              "ToolTip": "C:\\Users\\15562\\Desktop\\BlendMaster-v1\\Services\\CategoryService.cs",
-              "RelativeToolTip": "Services\\CategoryService.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAADwvwAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-13T05:54:31.612Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 11,
-              "Title": "CartService.cs",
-              "DocumentMoniker": "C:\\Users\\15562\\Desktop\\BlendMaster-v1\\Services\\CartService.cs",
-              "RelativeDocumentMoniker": "Services\\CartService.cs",
-              "ToolTip": "C:\\Users\\15562\\Desktop\\BlendMaster-v1\\Services\\CartService.cs",
-              "RelativeToolTip": "Services\\CartService.cs",
-              "ViewState": "AQIAAAoAAAAAAAAAAAAywAAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-13T05:54:25.863Z"
+              "DocumentIndex": 3,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "C:\\Users\\user\\BlendMaster\\Views\\Home\\Index.cshtml",
+              "RelativeDocumentMoniker": "Views\\Home\\Index.cshtml",
+              "ToolTip": "C:\\Users\\user\\BlendMaster\\Views\\Home\\Index.cshtml",
+              "RelativeToolTip": "Views\\Home\\Index.cshtml",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA0AAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-06-16T23:54:17.396Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 2,
-              "Title": "SessionExtensions.cs",
-              "DocumentMoniker": "C:\\Users\\15562\\Desktop\\BlendMaster-v1\\Helpers\\SessionExtensions.cs",
-              "RelativeDocumentMoniker": "Helpers\\SessionExtensions.cs",
-              "ToolTip": "C:\\Users\\15562\\Desktop\\BlendMaster-v1\\Helpers\\SessionExtensions.cs",
-              "RelativeToolTip": "Helpers\\SessionExtensions.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAADwvwAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-13T05:54:16.494Z",
-              "EditorCaption": ""
+              "Title": "OrderConfirmation.cshtml",
+              "DocumentMoniker": "C:\\Users\\user\\BlendMaster\\Views\\Home\\OrderConfirmation.cshtml",
+              "RelativeDocumentMoniker": "Views\\Home\\OrderConfirmation.cshtml",
+              "ToolTip": "C:\\Users\\user\\BlendMaster\\Views\\Home\\OrderConfirmation.cshtml",
+              "RelativeToolTip": "Views\\Home\\OrderConfirmation.cshtml",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAsAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-06-16T23:53:04.376Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
+              "Title": "Cart.cshtml",
+              "DocumentMoniker": "C:\\Users\\user\\BlendMaster\\Views\\Home\\Cart.cshtml",
+              "RelativeDocumentMoniker": "Views\\Home\\Cart.cshtml",
+              "ToolTip": "C:\\Users\\user\\BlendMaster\\Views\\Home\\Cart.cshtml",
+              "RelativeToolTip": "Views\\Home\\Cart.cshtml",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAACgAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-06-16T23:54:15.614Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
               "Title": "HomeController.cs",
-              "DocumentMoniker": "C:\\Users\\15562\\Desktop\\BlendMaster-v1\\Controllers\\HomeController.cs",
+              "DocumentMoniker": "C:\\Users\\user\\BlendMaster\\Controllers\\HomeController.cs",
               "RelativeDocumentMoniker": "Controllers\\HomeController.cs",
-              "ToolTip": "C:\\Users\\15562\\Desktop\\BlendMaster-v1\\Controllers\\HomeController.cs",
+              "ToolTip": "C:\\Users\\user\\BlendMaster\\Controllers\\HomeController.cs",
               "RelativeToolTip": "Controllers\\HomeController.cs",
-              "ViewState": "AQIAAEUAAAAAAAAAAAAYwF8AAABFAAAA",
+              "ViewState": "AQIAAB4AAAAAAAAAAAAowEIAAAASAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-13T05:53:36.344Z",
+              "WhenOpened": "2024-06-16T23:38:58.501Z",
               "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "Privacy.cshtml",
-              "DocumentMoniker": "C:\\Users\\15562\\Desktop\\BlendMaster-v1\\Views\\Home\\Privacy.cshtml",
-              "RelativeDocumentMoniker": "Views\\Home\\Privacy.cshtml",
-              "ToolTip": "C:\\Users\\15562\\Desktop\\BlendMaster-v1\\Views\\Home\\Privacy.cshtml",
-              "RelativeToolTip": "Views\\Home\\Privacy.cshtml",
-              "ViewState": "AQIAAAYAAAAAAAAAAAAAAAAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-06-13T05:55:08.389Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "SelectTable.cshtml",
-              "DocumentMoniker": "C:\\Users\\15562\\Desktop\\BlendMaster-v1\\Views\\Home\\SelectTable.cshtml",
-              "RelativeDocumentMoniker": "Views\\Home\\SelectTable.cshtml",
-              "ToolTip": "C:\\Users\\15562\\Desktop\\BlendMaster-v1\\Views\\Home\\SelectTable.cshtml",
-              "RelativeToolTip": "Views\\Home\\SelectTable.cshtml",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABgAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-06-13T05:55:09.856Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 12,
-              "Title": "ErrorViewModel.cs",
-              "DocumentMoniker": "C:\\Users\\15562\\Desktop\\BlendMaster-v1\\Models\\ErrorViewModel.cs",
-              "RelativeDocumentMoniker": "Models\\ErrorViewModel.cs",
-              "ToolTip": "C:\\Users\\15562\\Desktop\\BlendMaster-v1\\Models\\ErrorViewModel.cs",
-              "RelativeToolTip": "Models\\ErrorViewModel.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAADwvwAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-13T05:54:23.512Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 13,
-              "Title": "CartViewModel.cs",
-              "DocumentMoniker": "C:\\Users\\15562\\Desktop\\BlendMaster-v1\\Models\\CartViewModel.cs",
-              "RelativeDocumentMoniker": "Models\\CartViewModel.cs",
-              "ToolTip": "C:\\Users\\15562\\Desktop\\BlendMaster-v1\\Models\\CartViewModel.cs",
-              "RelativeToolTip": "Models\\CartViewModel.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAADwvwAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-13T05:54:22.644Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 14,
-              "Title": "CartItemViewModel.cs",
-              "DocumentMoniker": "C:\\Users\\15562\\Desktop\\BlendMaster-v1\\Models\\CartItemViewModel.cs",
-              "RelativeDocumentMoniker": "Models\\CartItemViewModel.cs",
-              "ToolTip": "C:\\Users\\15562\\Desktop\\BlendMaster-v1\\Models\\CartItemViewModel.cs",
-              "RelativeToolTip": "Models\\CartItemViewModel.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAADwvwAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-13T05:54:21.492Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 15,
-              "Title": "Wine.cs",
-              "DocumentMoniker": "C:\\Users\\15562\\Desktop\\BlendMaster-v1\\Entities\\Wine.cs",
-              "RelativeDocumentMoniker": "Entities\\Wine.cs",
-              "ToolTip": "C:\\Users\\15562\\Desktop\\BlendMaster-v1\\Entities\\Wine.cs",
-              "RelativeToolTip": "Entities\\Wine.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAADwvwAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-13T05:54:14.682Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 16,
-              "Title": "Table.cs",
-              "DocumentMoniker": "C:\\Users\\15562\\Desktop\\BlendMaster-v1\\Entities\\Table.cs",
-              "RelativeDocumentMoniker": "Entities\\Table.cs",
-              "ToolTip": "C:\\Users\\15562\\Desktop\\BlendMaster-v1\\Entities\\Table.cs",
-              "RelativeToolTip": "Entities\\Table.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAADwvwAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-13T05:54:13.872Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 17,
-              "Title": "OrderDetail.cs",
-              "DocumentMoniker": "C:\\Users\\15562\\Desktop\\BlendMaster-v1\\Entities\\OrderDetail.cs",
-              "RelativeDocumentMoniker": "Entities\\OrderDetail.cs",
-              "ToolTip": "C:\\Users\\15562\\Desktop\\BlendMaster-v1\\Entities\\OrderDetail.cs",
-              "RelativeToolTip": "Entities\\OrderDetail.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAADwvwAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-13T05:54:13.202Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 18,
-              "Title": "Order.cs",
-              "DocumentMoniker": "C:\\Users\\15562\\Desktop\\BlendMaster-v1\\Entities\\Order.cs",
-              "RelativeDocumentMoniker": "Entities\\Order.cs",
-              "ToolTip": "C:\\Users\\15562\\Desktop\\BlendMaster-v1\\Entities\\Order.cs",
-              "RelativeToolTip": "Entities\\Order.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAADwvwAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-13T05:54:11.801Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 19,
-              "Title": "EnDbContext.cs",
-              "DocumentMoniker": "C:\\Users\\15562\\Desktop\\BlendMaster-v1\\Entities\\EnDbContext.cs",
-              "RelativeDocumentMoniker": "Entities\\EnDbContext.cs",
-              "ToolTip": "C:\\Users\\15562\\Desktop\\BlendMaster-v1\\Entities\\EnDbContext.cs",
-              "RelativeToolTip": "Entities\\EnDbContext.cs",
-              "ViewState": "AQIAAGkAAAAAAAAAAAAkwAAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-13T05:54:03.55Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 20,
-              "Title": "Category.cs",
-              "DocumentMoniker": "C:\\Users\\15562\\Desktop\\BlendMaster-v1\\Entities\\Category.cs",
-              "RelativeDocumentMoniker": "Entities\\Category.cs",
-              "ToolTip": "C:\\Users\\15562\\Desktop\\BlendMaster-v1\\Entities\\Category.cs",
-              "RelativeToolTip": "Entities\\Category.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-13T05:54:01.092Z"
             }
           ]
         }

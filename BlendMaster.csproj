@@ -23,4 +23,9 @@
     </Content>
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Views\Order\" />
+    <Folder Include="Views\Menu\" />
+  </ItemGroup>
+
 </Project>

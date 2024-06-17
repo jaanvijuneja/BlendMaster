@@ -7,11 +7,20 @@ using Microsoft.EntityFrameworkCore;
 using BlendMaster.Entities;
 using BlendMaster.Services;
 using Newtonsoft.Json;
+using OpenAI_API;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+
+// Register OpenAI service
+builder.Services.AddSingleton<OpenAIAPI>(sp =>
+{
+    var apiKey = builder.Configuration["OpenAI:ApiKey"];
+    return new OpenAIAPI(apiKey);
+});
+builder.Services.AddSingleton<ChatService>();
 
 // Configure session options
 builder.Services.AddSession(options =>
@@ -48,5 +57,9 @@ app.UseAuthorization();
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=SelectTable}");
+
+app.MapControllerRoute(
+    name: "test",
+    pattern: "{controller=Home}/{action=Index}");
 
 app.Run();

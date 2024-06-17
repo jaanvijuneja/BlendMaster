@@ -7,6 +7,17 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Views\Menu\**" />
+    <Compile Remove="Views\Order\**" />
+    <Content Remove="Views\Menu\**" />
+    <Content Remove="Views\Order\**" />
+    <EmbeddedResource Remove="Views\Menu\**" />
+    <EmbeddedResource Remove="Views\Order\**" />
+    <None Remove="Views\Menu\**" />
+    <None Remove="Views\Order\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="7.0.20" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="7.0.20" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="7.0.20">
@@ -14,6 +25,7 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
     <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+    <PackageReference Include="OpenAI" Version="1.11.0" />
   </ItemGroup>
 
   <ItemGroup>
@@ -21,11 +33,6 @@
       <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
     </Content>
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Views\Order\" />
-    <Folder Include="Views\Menu\" />
   </ItemGroup>
 
 </Project>

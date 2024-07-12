@@ -1,0 +1,43 @@
+﻿@model List<WebApplication2.Entities.Recipe>
+
+@{
+    ViewData["Title"] = "Recipes";
+}
+
+<div class="container mt-5">
+    @foreach (var recipe in Model)
+    {
+        <div class="card mb-4">
+            <div class="card-header">
+                <h2 class="card-title">@recipe.Name</h2>
+            </div>
+            <div class="card-body">
+                <p class="card-text"><strong>Description:</strong> @recipe.Description</p>
+
+                <h5>Ingredients</h5>
+                <ul class="list-group mb-3">
+                    @foreach (var ingredient in recipe.Ingredients)
+                    {
+                        <li class="list-group-item">@ingredient</li>
+                    }
+                </ul>
+
+                <h5>Instructions</h5>
+                <ul class="list-group mb-3">
+                    @foreach (var instruction in recipe.Instructions)
+                    {
+                        <li class="list-group-item">@instruction</li>
+                    }
+                </ul>
+
+                <h5>Tags</h5>
+                <ul class="list-inline">
+                    @foreach (var tag in recipe.Tags)
+                    {
+                        <li class="list-inline-item">@tag</li>
+                    }
+                </ul>
+            </div>
+        </div>
+    }
+</div>

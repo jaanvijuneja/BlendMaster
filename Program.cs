@@ -1,5 +1,8 @@
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.IdentityModel.Tokens;
 using OpenAI_API;
+using System.Text;
 using WebApplication2.Entities;
 using WebApplication2.Services;
 
@@ -14,7 +17,7 @@ builder.Services.AddControllersWithViews();
 builder.Services.AddSession();
 
 // Register OpenAI service
-builder.Services.AddSingleton<OpenAIAPI>(sp =>
+builder.Services.AddSingleton(sp =>
 {
     var apiKey = builder.Configuration["OpenAI:ApiKey"];
     return new OpenAIAPI(apiKey);
@@ -22,6 +25,24 @@ builder.Services.AddSingleton<OpenAIAPI>(sp =>
 builder.Services.AddSingleton<OpenAIService>();
 
 builder.Services.AddSignalR();
+
+var jwtSrcret = builder.Configuration.GetSection("JWT_Secret").Value;
+builder.Services.AddSingleton(new TokenService(jwtSrcret));
+
+var key = Encoding.ASCII.GetBytes(jwtSrcret);
+builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+    .AddJwtBearer(options =>
+    {
+        options.RequireHttpsMetadata = false;
+        options.SaveToken = true;
+        options.TokenValidationParameters = new TokenValidationParameters
+        {
+            ValidateIssuerSigningKey = true,
+            IssuerSigningKey = new SymmetricSecurityKey(key),
+            ValidateIssuer = false,
+            ValidateAudience = false
+        };
+    });
 
 var app = builder.Build();
 
@@ -34,11 +55,14 @@ app.UseStaticFiles();
 
 app.UseRouting();
 
+app.UseAuthentication();
+
 app.UseAuthorization();
 
 app.UseSession();
 
 app.MapHub<ChatHub>("/chatHub");
+app.MapHub<NotificationHub>("/notificationHub");
 
 app.MapControllerRoute(
     name: "default",

@@ -1,1 +1,41 @@
 ﻿<h2>OK</h2>
+
+@section Scripts {
+    <script>
+        $(function () {
+            async function startConnection() {
+                const connection = new signalR.HubConnectionBuilder()
+                    .withUrl("/notificationHub?role=customer") // or role=manager
+                    .build();
+
+                try {
+                    await connection.start();
+                    console.log("Connected");
+
+                    // Now that the connection is established, send the notification
+                    const message = "Your notification message here";
+                    await sendNotification(connection, message);
+                } catch (err) {
+                    console.error("Connection error:", err.toString());
+                    setTimeout(startConnection, 5000); // Retry connection after 5 seconds
+                }
+            }
+
+            async function sendNotification(connection, message) {
+                if (!message) {
+                    console.error("Message is not defined.");
+                    return;
+                }
+                try {
+                    await connection.invoke("SendNotification", message);
+                    console.log("Notification sent.");
+                } catch (err) {
+                    console.error("Error sending notification:", err.toString());
+                }
+            }
+
+            // Start the connection process
+            startConnection();
+        });
+    </script>
+}

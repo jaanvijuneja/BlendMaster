@@ -8,6 +8,6 @@ namespace WebApplication2.Entities
         public int CategoryId { get; set; }
 
         [Required]
-        public string CategoryName { get; set; }
+        public string? CategoryName { get; set; }
     }
 }

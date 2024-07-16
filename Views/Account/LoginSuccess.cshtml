@@ -1,0 +1,12 @@
+﻿<h3>You have successfully logged in.</h3>
+<p>You will be redirected to the homepage shortly.</p>
+
+@section Scripts {
+    <script>
+        localStorage.setItem('loggedUser', '@TempData["UserName"]');
+        localStorage.setItem('jwtToken', '@TempData["Token"]');
+        setTimeout(function () {
+            window.location.href = '@Url.Action("Index", "Home")';
+        }, 2000);
+    </script>
+}

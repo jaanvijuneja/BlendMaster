@@ -7,11 +7,11 @@ namespace WebApplication2.Controllers
 {
     public class CartController : Controller
     {
-        private readonly TestDbContext _context;
+        private readonly TestDbContext _testDbContext;
 
-        public CartController(TestDbContext context)
+        public CartController(TestDbContext testDbContext)
         {
-            _context = context;
+            _testDbContext = testDbContext;
         }
 
         public IActionResult Index()
@@ -50,11 +50,16 @@ namespace WebApplication2.Controllers
             return RedirectToAction("Index", "Cart");
         }
 
-        public IActionResult Checkout() 
+        public IActionResult Checkout()
         {
             Guid orderId = Guid.NewGuid();
             decimal total = 0;
             var cart = HttpContext.Session.GetObject<List<CartItem>>("Cart");
+
+            if (cart == null) 
+            { 
+                return new EmptyResult();
+            }
 
             foreach (var cartItem in cart)
             {
@@ -66,20 +71,21 @@ namespace WebApplication2.Controllers
                 detail.UnitPrice = cartItem.Price;
                 detail.Quantity = cartItem.Quantity;
 
-                _context.OrderDetail.Add(detail);
+                _testDbContext.OrderDetail.Add(detail);
 
                 total += detail.UnitPrice * detail.Quantity;
             }
 
             CustomerOrder order = new CustomerOrder()
             {
-                CreatedDate = DateTime.Now,
+                CreatedDate = DateTime.Today,
                 OrderId = orderId,
-                Total = total
+                Total = total,
+                OrderStatus = OrderStatusType.Preparing
             };
 
-            _context.CustomerOrder.Add(order);
-            _context.SaveChanges();
+            _testDbContext.CustomerOrder.Add(order);
+            _testDbContext.SaveChanges();
 
             HttpContext.Session.Clear();
             HttpContext.Session.Remove("Cart");

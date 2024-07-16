@@ -3,6 +3,13 @@ using System.ComponentModel.DataAnnotations;
 
 namespace WebApplication2.Entities
 {
+    public enum OrderStatusType
+    {
+        Preparing,
+        Completed,
+        Cancelled
+    }
+
     public class CustomerOrder
     {
         [Key]
@@ -12,5 +19,9 @@ namespace WebApplication2.Entities
         public decimal Total { get; set; }
 
         public DateTime CreatedDate { get; set; }
+
+        public OrderStatusType OrderStatus { get; set; }
+
+        public ICollection<OrderDetail>? OrderDetails { get; set; }
     }
 }

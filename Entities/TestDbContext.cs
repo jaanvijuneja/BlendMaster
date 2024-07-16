@@ -11,22 +11,19 @@ namespace WebApplication2.Entities
         public DbSet<Product> Product { get; set; }
         public DbSet<Category> Category { get; set; }
         public DbSet<Recipe> Recipe { get; set; }
+        public DbSet<User> User { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Product>().HasKey(p => p.ProductId);
-            modelBuilder.Entity<Category>().HasKey(c => c.CategoryId);
-            modelBuilder.Entity<CustomerOrder>().HasKey(o => o.OrderId);
-            modelBuilder.Entity<OrderDetail>().HasKey(od => od.OrderDetailId);
-
-            modelBuilder.Entity<OrderDetail>()
-                .HasOne<CustomerOrder>()
-                .WithMany()
+            modelBuilder.Entity<CustomerOrder>()
+                .HasMany(co => co.OrderDetails)
+                .WithOne(od => od.CustomerOrder)
                 .HasForeignKey(od => od.OrderId)
                 .OnDelete(DeleteBehavior.Cascade);
 
             SeedData(modelBuilder);
         }
+
         private void SeedData(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Category>().HasData(
@@ -47,6 +44,14 @@ namespace WebApplication2.Entities
                 new Product { ProductId = 15, ProductName = "Espresso Martini", Price = 18m, CategoryId = 3, ProductDescription = "A classic sparkling Product with crisp acidity and fine bubbles.", ImageUrl = "#" },
                 new Product { ProductId = 16, ProductName = "Aperol Spritz", Price = 12m, CategoryId = 3, ProductDescription = "A light and refreshing sparkling Product with flavors of green apple and melon.", ImageUrl = "#" },
                 new Product { ProductId = 17, ProductName = "Gin Basil Smash", Price = 14m, CategoryId = 3, ProductDescription = "A Spanish sparkling Product with zesty citrus flavors and fine bubbles.", ImageUrl = "#" }
+            );
+
+            modelBuilder.Entity<User>().HasData(
+                new User { 
+                    UserId = Guid.NewGuid(), 
+                    Name = "Bartender", 
+                    Email = "email@example.com", 
+                    Password = BCrypt.Net.BCrypt.HashPassword("123") }
             );
         }
     }

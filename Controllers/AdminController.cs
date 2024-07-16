@@ -1,5 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using WebApplication2.Entities;
+using WebApplication2.Models;
 
 namespace WebApplication2.Controllers
 {
@@ -16,6 +18,41 @@ namespace WebApplication2.Controllers
         {
             List<Recipe> recipes = _context.Recipe.ToList();
             return View(recipes);
+        }
+
+        public IActionResult OngoingOrders()
+        {
+            List<OngoingOrdersViewModel> models = new List<OngoingOrdersViewModel>();
+
+            List<CustomerOrder> orders = _context.CustomerOrder
+                .Include(o => o.OrderDetails)
+                .OrderBy(o => o.OrderStatus)
+                .ToList();
+
+            foreach (var order in orders)
+            {
+                var listOfProducts = order.OrderDetails
+                    .Join(_context.Product,
+                        od => od.ProductId,
+                        p => p.ProductId,
+                        (od, p) => p.ProductName)
+                    .ToList();
+
+                models.Add(new OngoingOrdersViewModel()
+                {
+                    OrderId = order.OrderId,
+                    CreatedDate = order.CreatedDate,
+                    OrderStatus = order.OrderStatus,
+                    Products = listOfProducts
+                });
+            }
+
+            return View(models);
+        }
+
+        public IActionResult CloseOrder()
+        {
+            return View();
         }
     }
 }

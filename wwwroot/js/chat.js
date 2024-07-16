@@ -1,11 +1,11 @@
 ﻿// Establish connection to the hub
-var connection = new signalR.HubConnectionBuilder().withUrl("/chatHub").build();
+var chatConnection = new signalR.HubConnectionBuilder().withUrl("/chatHub").build();
 
 //Disable the send button until connection is established.
 document.getElementById("sendButton").disabled = true;
 
 // Function to handle incoming messages
-connection.on("ReceiveMessage", function (role, message) {
+chatConnection.on("ReceiveMessage", function (role, message) {
     var chatBox = $("#chat-box");
     var messageHtml = '<div class="card mb-2">' +
         '<div class="card-body ' + (role === "user" ? 'bg-light' : 'bg-info text-white') + '">' +
@@ -19,7 +19,7 @@ connection.on("ReceiveMessage", function (role, message) {
 });
 
 // Start the connection
-connection.start().then(function () {
+chatConnection.start().then(function () {
     document.getElementById("sendButton").disabled = false;
 }).catch(function (err) {
     return console.error(err.toString());
@@ -30,7 +30,7 @@ $("#sendButton").click(function (event) {
     event.preventDefault();
 
     var userInput = $("#userInput").val();
-    connection.invoke("SendMessage", userInput).catch(function (err) {
+    chatConnection.invoke("SendMessage", userInput).catch(function (err) {
         return console.error(err.toString());
     });
     $("#userInput").val("").focus();

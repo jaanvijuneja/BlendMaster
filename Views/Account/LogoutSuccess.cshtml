@@ -3,10 +3,12 @@
 
 @section Scripts {
     <script>
-        localStorage.removeItem('loggedUser');
-        localStorage.removeItem('jwtToken');
-        setTimeout(function () {
-            window.location.href = '@Url.Action("Index", "Home")';
-        }, 2000);
+        $(function () {
+            localStorage.removeItem('loggedUser');
+            localStorage.removeItem('jwtToken');
+            setTimeout(function () {
+                window.location.href = '@Url.Action("Index", "Home")';
+            }, 2000);
+        })
     </script>
 }

@@ -3,10 +3,12 @@
 
 @section Scripts {
     <script>
-        localStorage.setItem('loggedUser', '@TempData["UserName"]');
-        localStorage.setItem('jwtToken', '@TempData["Token"]');
-        setTimeout(function () {
-            window.location.href = '@Url.Action("Index", "Home")';
-        }, 2000);
+        $(function () {
+            localStorage.setItem('loggedUser', '@TempData["UserName"]');
+            localStorage.setItem('jwtToken', '@TempData["Token"]');
+            setTimeout(function () {
+                window.location.href = '@Url.Action("Index", "Admin")';
+            }, 2000);
+        })
     </script>
 }

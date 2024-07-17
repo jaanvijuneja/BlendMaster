@@ -14,6 +14,11 @@ namespace WebApplication2.Controllers
             _context = context;
         }
 
+        public IActionResult Index()
+        {
+            return View();
+        }
+
         public IActionResult Recipes()
         {
             List<Recipe> recipes = _context.Recipe.OrderBy(r => r.Status).ToList();
@@ -121,8 +126,8 @@ namespace WebApplication2.Controllers
         {
             CustomerOrder order = _context.CustomerOrder.Find(id);
 
-            if (order == null) 
-            { 
+            if (order == null)
+            {
                 return View("Error");
             }
 

@@ -1,11 +1,13 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace WebApplication2.Entities
 {
     public class Category
     {
         [Key]
-        public int CategoryId { get; set; }
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public Guid CategoryId { get; set; }
 
         public string? CategoryName { get; set; }
     }

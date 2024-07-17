@@ -31,9 +31,12 @@
                     <td>@order.OrderStatus</td>
                     <td>@order.TableId</td>
                     <td>
-                        <a asp-controller="Admin" asp-action="CompleteOrder" asp-route-id="@order.OrderId">complete</a>
-                        <span>|</span>
-                        <a asp-controller="Admin" asp-action="CancelOrder" asp-route-id="@order.OrderId">cancel</a>
+                        @if(order.OrderStatus == WebApplication2.Entities.OrderStatusType.Preparing)
+                        {
+                            <a asp-controller="Admin" asp-action="CompleteOrder" asp-route-id="@order.OrderId">complete</a>
+                            <span>|</span>
+                            <a asp-controller="Admin" asp-action="CancelOrder" asp-route-id="@order.OrderId">cancel</a>
+                        }
                     </td>
                 </tr>
             }

@@ -81,7 +81,8 @@ namespace WebApplication2.Controllers
                 CreatedDate = DateTime.Today,
                 OrderId = orderId,
                 Total = total,
-                OrderStatus = OrderStatusType.Preparing
+                OrderStatus = OrderStatusType.Preparing,
+                TableId = 1
             };
 
             _testDbContext.CustomerOrder.Add(order);

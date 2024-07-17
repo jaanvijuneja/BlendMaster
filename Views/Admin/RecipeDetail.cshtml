@@ -31,6 +31,7 @@
                     <li class="list-inline-item">@tag</li>
                 }
             </ul>
+
             <form asp-controller="Admin" asp-action="RecipeDetail" method="post">
                 <input class="d-none" asp-for="RecipeId" value="@Model.RecipeId" />
                 <input class="d-none" asp-for="Tags" />
@@ -41,7 +42,16 @@
                     <option>@RecipeStatusType.RolledOut</option>
                     <option>@RecipeStatusType.Archived</option>
                 </select>
-                <input type="submit" value="Submit" />
+                <input type="submit" value="Submit" class="btn btn-primary" />
+            </form>
+
+            <form asp-controller="Admin" asp-action="AddRecipeToMenu" method="post">
+                <input class="d-none" name="id" value="@Model.RecipeId"/>
+                <label for="categoryName">category</label>
+                <input type="text" name="categoryName" />
+                <label for="price">price</label>
+                <input type="text" name="price" />
+                <input type="submit" class="btn btn-danger" value="Add to Menu" />
             </form>
         </div>
     </div>

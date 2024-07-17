@@ -14,17 +14,23 @@ namespace WebApplication2.Controllers
             _context = context;
         }
 
-        public IActionResult Index(int categoryId)
+        public IActionResult Index(Guid categoryId)
         {
             List<Category> categories = _context.Category.ToList();
-            List<Product> products = _context.Product.Where(p => p.CategoryId == categoryId).ToList();
+            var products = _context.Product.Where(p => p.CategoryId == categoryId).ToList();
+
+            if (!products.Any())
+            {
+                products = _context.Product.Where(p => p.CategoryId == _context.Category.FirstOrDefault().CategoryId).ToList();
+            }
+
             MenuViewModel viewModel = new MenuViewModel() { Categories = categories, Products = products };
 
             return View(viewModel);
         }
 
         [HttpPost]
-        public IActionResult AddToCart(int productId)
+        public IActionResult AddToCart(Guid productId)
         {
             var Product = _context.Product.Find(productId);
             var cart = HttpContext.Session.GetObject<List<CartItem>>("Cart") ?? new List<CartItem>();

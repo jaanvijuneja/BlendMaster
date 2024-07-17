@@ -51,11 +51,36 @@ namespace WebApplication2.Controllers
             }
             catch (Exception ex)
             {
-                // Log the exception (ex)
                 return StatusCode(500, "Internal server error.");
             }
 
             return RedirectToAction("RecipeDetail", new { recipe.RecipeId });
+        }
+
+        [HttpPost]
+        public IActionResult AddRecipeToMenu(Guid id, string categoryName, string price)
+        {
+            Recipe recipe = _context.Recipe.FirstOrDefault(r => r.RecipeId == id);
+            Category category = _context.Category.FirstOrDefault(c => c.CategoryName == categoryName);
+
+            if (recipe == null || category == null)
+            {
+                return NotFound();
+            }
+
+            Product product = new Product()
+            {
+                ProductName = recipe.Name,
+                ProductDescription = recipe.Description,
+                Price = decimal.Parse(price),
+                CategoryId = category.CategoryId,
+                ProductId = Guid.NewGuid()
+            };
+
+            _context.Product.Add(product);
+            _context.SaveChanges();
+
+            return RedirectToAction("Recipes");
         }
 
         public IActionResult OngoingOrders()

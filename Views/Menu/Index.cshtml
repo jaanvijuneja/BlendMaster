@@ -42,7 +42,9 @@
                         </div>
                     </div>
                     <div class="card-footer d-flex flex-column align-items-stretch justify-content-evenly">
-                        <button class="btn btn-outline-secondary btn-sm" onclick="add(@product.ProductId)">+</button>
+                        <button class="btn btn-outline-secondary btn-sm" onclick="add('@product.ProductId')">+</button>
+                        <p class="m-0 text-center">0</p>
+                        <button class="btn btn-outline-secondary btn-sm" onclick="add('@product.ProductId')">-</button>
                     </div>
                 </div>
             </div>
@@ -53,7 +55,6 @@
 @section scripts {
     <script>
         function add(id) {
-            console.log('clicked!');
             $.ajax({
                 url: '@Url.Action("AddToCart", "Menu")?productid=' + id,
                 type: 'POST',

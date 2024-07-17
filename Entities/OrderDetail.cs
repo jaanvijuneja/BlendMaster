@@ -9,7 +9,7 @@ namespace WebApplication2.Entities
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public Guid OrderDetailId { get; set; }
 
-        public int ProductId { get; set; }
+        public Guid ProductId { get; set; }
         public Product? Product { get; set; }
 
         public decimal UnitPrice { get; set; }

@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 using WebApplication2.Models;
+using WebApplication2.Tools;
 
 namespace WebApplication2.Controllers
 {
@@ -15,13 +16,23 @@ namespace WebApplication2.Controllers
 
         public IActionResult Index()
         {
-            HttpContext.Session.SetString("Username","John");
             return View();
+        }
+
+        public IActionResult SelectTable(int id) 
+        {
+            int? existingTableId = HttpContext.Session.GetObject<int>("TableId");
+
+            if (existingTableId == null)
+            {
+                HttpContext.Session.SetObject("TableId", id);
+            }
+
+            return RedirectToAction("Index", "Menu");
         }
 
         public IActionResult Privacy()
         {
-            ViewData["Username"] = HttpContext.Session.GetString("Username");
             return View();
         }
 

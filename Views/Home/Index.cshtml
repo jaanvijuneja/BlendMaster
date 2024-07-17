@@ -1,12 +1,25 @@
-﻿@{
+﻿@model List<WebApplication2.Entities.Table>
+
+@{
     ViewData["Title"] = "Home Page";
 }
 
 <div class="text-center">
     <h1 class="display-4">Blend Master</h1>
+
+    <form asp-controller="Home" asp-action="SelectTable" method="post">
+        <select>
+            @foreach (var table in Model)
+            {
+                <option value="@table.TableId">@table.TableName</option>
+            }
+        </select>
+        <input type="submit" value="Submit" />
+    </form>
+
     <a asp-controller="Menu" asp-action="Index">Check our menu!</a>
-    <br/>
+    <br />
     <a asp-controller="Chat" asp-action="Index">Try our chatbot!</a>
-    <br/>
+    <br />
     <a asp-controller="Admin" asp-action="Recipes">Check our recipes!</a>
 </div>

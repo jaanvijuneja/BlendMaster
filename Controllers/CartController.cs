@@ -82,7 +82,7 @@ namespace WebApplication2.Controllers
                 OrderId = orderId,
                 Total = total,
                 OrderStatus = OrderStatusType.Preparing,
-                TableId = 1
+                TableId = HttpContext.Session.GetObject<int>("TableId")
             };
 
             _testDbContext.CustomerOrder.Add(order);

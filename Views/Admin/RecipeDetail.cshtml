@@ -1,36 +1,48 @@
 ﻿@model WebApplication2.Entities.Recipe
 
 <div class="container mt-5">
-        <div class="card mb-4">
-            <div class="card-header">
-                <h2 class="card-title">@Model.Name</h2>
-            </div>
-            <div class="card-body">
+    <div class="card mb-4">
+        <div class="card-header">
+            <h2 class="card-title">@Model.Name</h2>
+        </div>
+        <div class="card-body">
             <p class="card-text"><strong>Description:</strong> @Model.Description</p>
 
-                <h5>Ingredients</h5>
-                <ul class="list-group mb-3">
-                    @foreach (var ingredient in Model.Ingredients)
-                    {
-                        <li class="list-group-item">@ingredient</li>
-                    }
-                </ul>
+            <h5>Ingredients</h5>
+            <ul class="list-group mb-3">
+                @foreach (var ingredient in Model.Ingredients)
+                {
+                    <li class="list-group-item">@ingredient</li>
+                }
+            </ul>
 
-                <h5>Instructions</h5>
-                <ul class="list-group mb-3">
-                    @foreach (var instruction in Model.Instructions)
-                    {
-                        <li class="list-group-item">@instruction</li>
-                    }
-                </ul>
+            <h5>Instructions</h5>
+            <ul class="list-group mb-3">
+                @foreach (var instruction in Model.Instructions)
+                {
+                    <li class="list-group-item">@instruction</li>
+                }
+            </ul>
 
-                <h5>Tags</h5>
-                <ul class="list-inline">
-                    @foreach (var tag in Model.Tags)
-                    {
-                        <li class="list-inline-item">@tag</li>
-                    }
-                </ul>
-            </div>
+            <h5>Tags</h5>
+            <ul class="list-inline">
+                @foreach (var tag in Model.Tags)
+                {
+                    <li class="list-inline-item">@tag</li>
+                }
+            </ul>
+            <form asp-controller="Admin" asp-action="RecipeDetail" method="post">
+                <input class="d-none" asp-for="RecipeId" value="@Model.RecipeId" />
+                <input class="d-none" asp-for="Tags" />
+                <h5>Change status to:</h5>
+                <select asp-for="Status">
+                    <option>@RecipeStatusType.Testing</option>
+                    <option>@RecipeStatusType.Rejected</option>
+                    <option>@RecipeStatusType.RolledOut</option>
+                    <option>@RecipeStatusType.Archived</option>
+                </select>
+                <input type="submit" value="Submit" />
+            </form>
         </div>
+    </div>
 </div>

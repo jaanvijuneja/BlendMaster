@@ -5,9 +5,9 @@ namespace WebApplication2.Entities
 {
     public enum RecipeStatusType
     {
-        Testing,
-        Rejected,
+        Testing, 
         RolledOut,
+        Rejected,
         Archived
     }
 

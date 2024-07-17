@@ -12,6 +12,7 @@
                 <th>Order Date</th>
                 <th>Order Items</th>
                 <th>Order Status</th>
+                <th>Table Id</th>
                 <th>Actions</th>
             </tr>
         </thead>
@@ -22,18 +23,17 @@
                     <td>@order.OrderId</td>
                     <td>@order.CreatedDate.ToString("yyyy-MM-dd")</td>
                     <td>
-                        @foreach (var product in order.Products)
+                        @foreach (var item in order.OrderItems)
                         {
-                            <span class="badge badge-primary text-black">@product</span>
+                            <span class="badge badge-primary text-black">@item.Key * @item.Value</span>
                         }
                     </td>
                     <td>@order.OrderStatus</td>
+                    <td>@order.TableId</td>
                     <td>
-                        <a href="#">complete</a>
+                        <a asp-controller="Admin" asp-action="CompleteOrder" asp-route-id="@order.OrderId">complete</a>
                         <span>|</span>
-                        <a href="#">cancel</a>
-                        <span>|</span>
-                        <a href="#">recipe</a>
+                        <a asp-controller="Admin" asp-action="CancelOrder" asp-route-id="@order.OrderId">cancel</a>
                     </td>
                 </tr>
             }

@@ -23,5 +23,8 @@ namespace WebApplication2.Entities
         public OrderStatusType OrderStatus { get; set; }
 
         public ICollection<OrderDetail>? OrderDetails { get; set; }
+
+        public int TableId { get; set; }
+        public Table? Table { get; set; }
     }
 }

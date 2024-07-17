@@ -2,11 +2,11 @@
 
 namespace WebApplication2.Entities
 {
-    public class Category
+    public class Table
     {
         [Key]
-        public int CategoryId { get; set; }
+        public int TableId { get; set; }
 
-        public string? CategoryName { get; set; }
+        public string? TableName { get; set; }
     }
 }

@@ -12,6 +12,7 @@ namespace WebApplication2.Entities
         public DbSet<Category> Category { get; set; }
         public DbSet<Recipe> Recipe { get; set; }
         public DbSet<User> User { get; set; }
+        public DbSet<Table> Table { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -46,12 +47,22 @@ namespace WebApplication2.Entities
                 new Product { ProductId = 17, ProductName = "Gin Basil Smash", Price = 14m, CategoryId = 3, ProductDescription = "A Spanish sparkling Product with zesty citrus flavors and fine bubbles.", ImageUrl = "#" }
             );
 
+            modelBuilder.Entity<Table>().HasData(
+                new Table { TableId = 1, TableName = "Table1" },
+                new Table { TableId = 2, TableName = "Table2" },
+                new Table { TableId = 3, TableName = "Table3" },
+                new Table { TableId = 4, TableName = "Table4" },
+                new Table { TableId = 5, TableName = "Table5" }
+            );
+
             modelBuilder.Entity<User>().HasData(
-                new User { 
-                    UserId = Guid.NewGuid(), 
-                    Name = "Bartender", 
-                    Email = "email@example.com", 
-                    Password = BCrypt.Net.BCrypt.HashPassword("123") }
+                new User
+                {
+                    UserId = Guid.NewGuid(),
+                    Name = "Bartender",
+                    Email = "email@example.com",
+                    Password = BCrypt.Net.BCrypt.HashPassword("123")
+                }
             );
         }
     }

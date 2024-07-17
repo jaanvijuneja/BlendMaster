@@ -20,6 +20,19 @@ namespace WebApplication2.Controllers
             return View(recipes);
         }
 
+        [HttpGet]
+        public IActionResult RecipeDetail(Guid id)
+        {
+            Recipe recipe = _context.Recipe.FirstOrDefault(r => r.RecipeId == id);
+
+            if (recipe == null)
+            {
+                return NotFound();
+            }
+
+            return View(recipe);
+        }
+
         public IActionResult OngoingOrders()
         {
             List<OngoingOrdersViewModel> models = new List<OngoingOrdersViewModel>();

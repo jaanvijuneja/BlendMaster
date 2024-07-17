@@ -2,6 +2,7 @@
 using WebApplication2.Entities;
 using WebApplication2.Models;
 using Newtonsoft.Json;
+using OpenAI_API.Chat;
 
 namespace WebApplication2.Services
 {
@@ -14,7 +15,7 @@ namespace WebApplication2.Services
             _scopeFactory = scopeFactory;
         }
 
-        public async Task<string> GetFakeResponse(string userInput)
+        public async Task<string> GetTestResponse(string userInput)
         {
             var scope = _scopeFactory.CreateScope();
             var api = scope.ServiceProvider.GetRequiredService<OpenAIAPI>();
@@ -31,12 +32,36 @@ namespace WebApplication2.Services
             chat.AppendUserInput(userInput);
             string response = await chat.GetResponseFromChatbotAsync();
 
-            //<ChatResult> result = api.Chat.CreateChatCompletionAsync("Hello!");
-            //Console.WriteLine(result.Result.Choices[0].Message);
-
             return "response";
         }
 
+        public async Task<string> GetResponseWithoutSaving(string userInput)
+        {
+            var scope = _scopeFactory.CreateScope();
+            var api = scope.ServiceProvider.GetRequiredService<OpenAIAPI>();
+
+            List<ChatMessage> conversationHistory =
+            [
+                new ChatMessage(ChatMessageRole.System, "You are Bartender, a helpful assistant to provide suggestions about cocktails and other mixed drinks. A user may ask you about a certain recipe, or ask you to provide a recipe that suits the user's requirements."),
+                new ChatMessage(ChatMessageRole.System, "You can provide with all well-known recipes, but also be creative to provide new recipes if you are asked to."),
+                new ChatMessage(ChatMessageRole.System, "Only provide drink recipes as your answers. a recipe should include following contents: a name, a description, a list of ingredients, a list of instructions, and a list of tags."),
+                new ChatMessage(ChatMessageRole.System, "Please provide your recipes in html with the following structure: <html><body><!---Your recipes here including name, description, ingredients, instructions and tags---></body></html>."),
+                new ChatMessage(ChatMessageRole.System, "If a user asks questions that can't be answered as recipes, politely tell the user to ask another question."),
+                new ChatMessage(ChatMessageRole.User, userInput),
+            ];
+
+            var chatResponse = await api.Chat.CreateChatCompletionAsync(
+                new ChatRequest()
+                {
+                    Messages = conversationHistory
+                }
+            );
+
+            var response = chatResponse.Choices[0].Message.Content;
+            Console.WriteLine(response);
+
+            return response;
+        }
 
         public async Task<string> GetChatResponse(string userInput)
         {
@@ -48,7 +73,7 @@ namespace WebApplication2.Services
             string Query = userInput;
             //    + " Please provide your answer in the form of a valid JSON object with the following structure: "
             //    + "{\"name\": \"\", \"description\": \"\", \"ingredients\": [\"\"], \"instructions\": [\"\"], \"tags\": [\"\"]}.";
-            
+
             var result = await api.Completions.CreateCompletionAsync(
                 new OpenAI_API.Completions.CompletionRequest
                 {
@@ -58,15 +83,43 @@ namespace WebApplication2.Services
             );
             string Response = result.Completions[0].Text;
 
+            SaveResponseToDatabase(Response);
+
+            return Response;
+        }
+
+        public async void SaveResponseToDatabase(string userInput)
+        {
+            var scope = _scopeFactory.CreateScope();
+            var dbContext = scope.ServiceProvider.GetRequiredService<TestDbContext>();
+            var api = scope.ServiceProvider.GetRequiredService<OpenAIAPI>();
+
+            List<ChatMessage> conversationHistory =
+            [
+                    new ChatMessage(ChatMessageRole.System, "You are Bartender, a helpful assistant to provide recipes for drink making."),
+                    new ChatMessage(ChatMessageRole.User, userInput),
+                    new ChatMessage (ChatMessageRole.User, "Please rewrite this recipe in the form of a valid JSON object with the following structure: {\"name\": \"\", \"description\": \"\", \"ingredients\": [\"\"], \"instructions\": [\"\"], \"tags\": [\"\"]}."),
+            ];
+
+            var chatResponse = await api.Chat.CreateChatCompletionAsync(
+                new ChatRequest()
+                {
+                    Messages = conversationHistory
+                }
+            );
+
+            var response = chatResponse.Choices[0].Message.Content;
+            Console.WriteLine(response);
+
             RecipeModel? item = null;
             try
             {
-                item = JsonConvert.DeserializeObject<RecipeModel>(Response);
+                item = JsonConvert.DeserializeObject<RecipeModel>(response);
             }
             catch (JsonException ex)
             {
                 Console.WriteLine($"Deserialization error: {ex.Message}");
-                Console.WriteLine($"Response: {Response}");
+                Console.WriteLine($"Response: {response}");
             }
 
             if (item != null)
@@ -79,13 +132,13 @@ namespace WebApplication2.Services
                     Ingredients = item.Ingredients,
                     Instructions = item.Instructions,
                     Tags = item.Tags,
+                    Status = Entities.RecipeStatusType.Testing,
                 };
 
                 dbContext.Recipe.Add(recipe);
                 await dbContext.SaveChangesAsync();
             }
-
-            return Response;
         }
+
     }
 }

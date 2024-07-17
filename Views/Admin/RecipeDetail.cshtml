@@ -1,0 +1,36 @@
+﻿@model WebApplication2.Entities.Recipe
+
+<div class="container mt-5">
+        <div class="card mb-4">
+            <div class="card-header">
+                <h2 class="card-title">@Model.Name</h2>
+            </div>
+            <div class="card-body">
+            <p class="card-text"><strong>Description:</strong> @Model.Description</p>
+
+                <h5>Ingredients</h5>
+                <ul class="list-group mb-3">
+                    @foreach (var ingredient in Model.Ingredients)
+                    {
+                        <li class="list-group-item">@ingredient</li>
+                    }
+                </ul>
+
+                <h5>Instructions</h5>
+                <ul class="list-group mb-3">
+                    @foreach (var instruction in Model.Instructions)
+                    {
+                        <li class="list-group-item">@instruction</li>
+                    }
+                </ul>
+
+                <h5>Tags</h5>
+                <ul class="list-inline">
+                    @foreach (var tag in Model.Tags)
+                    {
+                        <li class="list-inline-item">@tag</li>
+                    }
+                </ul>
+            </div>
+        </div>
+</div>

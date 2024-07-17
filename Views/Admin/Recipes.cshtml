@@ -8,33 +8,17 @@
     @foreach (var recipe in Model)
     {
         <div class="card mb-4">
-            <div class="card-header">
+            <div class="card-header d-flex justify-content-between align-items-center">
                 <h2 class="card-title">@recipe.Name</h2>
+                <a asp-controller="Admin" asp-action="RecipeDetail" asp-route-id="@recipe.RecipeId" class="btn btn-primary mt-3">View Details</a>
             </div>
             <div class="card-body">
-                <p class="card-text"><strong>Description:</strong> @recipe.Description</p>
-
-                <h5>Ingredients</h5>
-                <ul class="list-group mb-3">
-                    @foreach (var ingredient in recipe.Ingredients)
-                    {
-                        <li class="list-group-item">@ingredient</li>
-                    }
-                </ul>
-
-                <h5>Instructions</h5>
-                <ul class="list-group mb-3">
-                    @foreach (var instruction in recipe.Instructions)
-                    {
-                        <li class="list-group-item">@instruction</li>
-                    }
-                </ul>
-
+                <h5>Status: @recipe.Status</h5>
                 <h5>Tags</h5>
                 <ul class="list-inline">
                     @foreach (var tag in recipe.Tags)
                     {
-                        <li class="list-inline-item">@tag</li>
+                        <li class="list-inline-item">"@tag"</li>
                     }
                 </ul>
             </div>

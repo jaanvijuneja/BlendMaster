@@ -19,10 +19,23 @@ namespace WebApplication2.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> GetResponse(ChatViewModel model)
+        public async Task<IActionResult> Index(ChatViewModel model)
         {
-            string Response = await _openAIService.GetFakeResponse(model.UserInput);
+            string Response = await _openAIService.GetResponseWithoutSaving(model.UserInput);
             model.BotResponse = Response;
+            return View(model);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> SaveResponse(ChatViewModel model) 
+        {
+            string userInput = model.BotResponse;
+
+            if (!string.IsNullOrEmpty(userInput))
+            {
+                _openAIService.SaveResponseToDatabase(userInput);
+            }
+
             return RedirectToAction("Index");
         }
     }

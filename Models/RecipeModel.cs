@@ -1,22 +1,26 @@
-﻿using Newtonsoft.Json;
-
-namespace WebApplication2.Models
+﻿namespace WebApplication2.Models
 {
+    public enum RecipeStatusType
+    {
+        Testing,
+        Rejected,
+        RolledOut,
+        Archived
+    }
     public class RecipeModel
     {
-        [JsonProperty("name")]
-        public string Name { get; set; }
+        Guid RecipeId { get; set; }
 
-        [JsonProperty("description")]
-        public string Description { get; set; }
+        public string? Name { get; set; }
 
-        [JsonProperty("ingredients")]
-        public List<string> Ingredients { get; set; }
+        public string? Description { get; set; }
 
-        [JsonProperty("instructions")]
-        public List<string> Instructions { get; set; }
+        public List<string>? Ingredients { get; set; }
 
-        [JsonProperty("tags")]
-        public List<string> Tags { get; set; }
+        public List<string>? Instructions { get; set; }
+
+        public List<string>? Tags { get; set; }
+
+        public RecipeStatusType? Status { get; set; }
     }
 }

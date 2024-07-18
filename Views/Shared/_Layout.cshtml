@@ -7,6 +7,13 @@
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/WebApplication2.styles.css" asp-append-version="true" />
+    <script type="text/javascript">
+        document.addEventListener("DOMContentLoaded", function () {
+            if (localStorage.getItem('loggedUser') && '@ViewData["Title"]' === 'Home Page') {
+                window.location.replace('@Url.Action("Index", "Admin")');
+            }
+        });
+    </script>
 </head>
 <body>
     <header>

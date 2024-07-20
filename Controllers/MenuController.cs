@@ -26,6 +26,12 @@ namespace WebApplication2.Controllers
 
             MenuViewModel viewModel = new MenuViewModel() { Categories = categories, Products = products };
 
+            var cart = HttpContext.Session.GetObject<List<CartItem>>("Cart");
+            if (cart != null)
+            {
+                ViewBag.CartItem = from item in cart select item.ProductId;
+            }
+
             return View(viewModel);
         }
 
@@ -35,6 +41,7 @@ namespace WebApplication2.Controllers
             var Product = _context.Product.Find(productId);
             var cart = HttpContext.Session.GetObject<List<CartItem>>("Cart") ?? new List<CartItem>();
             var existingItem = cart.FirstOrDefault(i => i.ProductId == productId);
+
             if (existingItem == null)
             {
                 cart.Add(new CartItem
@@ -47,6 +54,7 @@ namespace WebApplication2.Controllers
             }
 
             HttpContext.Session.SetObject("Cart", cart);
+
             return RedirectToAction("Index");
         }
     }

@@ -11,6 +11,7 @@
         document.addEventListener("DOMContentLoaded", function () {
             if (localStorage.getItem('loggedUser') && '@ViewData["Title"]' === 'Home Page') {
                 window.location.replace('@Url.Action("Index", "Admin")');
+
             }
         });
     </script>

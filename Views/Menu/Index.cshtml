@@ -2,6 +2,7 @@
 
 @{
     ViewData["Title"] = "Menu";
+    var cartItems = ViewBag.CartItem as IEnumerable<Guid> ?? Enumerable.Empty<Guid>();
 }
 
 <a asp-controller="Cart" asp-action="Index" class="link-info">Go to cart</a>
@@ -18,7 +19,7 @@
                     @foreach (var category in Model.Categories)
                     {
                         <li class="nav-item">
-                            <a class="nav-link" asp-asp-controller="Menu" asp-action="Index" asp-route-categoryid="@category.CategoryId">
+                            <a class="nav-link" asp-controller="Menu" asp-action="Index" asp-route-categoryid="@category.CategoryId">
                                 @category.CategoryName
                             </a>
                         </li>
@@ -32,6 +33,8 @@
         <h3>Products</h3>
         @foreach (var product in Model.Products)
         {
+            var isInCart = cartItems.Contains(product.ProductId);
+            var bgClass = isInCart ? "bg-success" : "";
             <div class="col">
                 <div class="card h-100 d-flex flex-row">
                     <img src="./TestImg.png" class="card-img-left" alt="@product.ProductName" style="height: 130px; width: 130px; object-fit: cover;">
@@ -42,9 +45,7 @@
                         </div>
                     </div>
                     <div class="card-footer d-flex flex-column align-items-stretch justify-content-evenly">
-                        <button class="btn btn-outline-secondary btn-sm" onclick="add('@product.ProductId')">+</button>
-                        <p class="m-0 text-center">0</p>
-                        <button class="btn btn-outline-secondary btn-sm" onclick="add('@product.ProductId')">-</button>
+                        <button class="btn btn-outline-secondary btn-sm @bgClass" onclick="add('@product.ProductId', this)">&#x2713</button>
                     </div>
                 </div>
             </div>
@@ -54,12 +55,13 @@
 
 @section scripts {
     <script>
-        function add(id) {
+        function add(id, button) {
             $.ajax({
                 url: '@Url.Action("AddToCart", "Menu")?productid=' + id,
                 type: 'POST',
                 success: function (data) {
                     $('#categoriesPartialContainer').html(data);
+                    button.style.backgroundColor = 'green';
                 },
                 error: function (xhr, status, error) {
                     console.error(error);

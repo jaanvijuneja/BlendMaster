@@ -1,4 +1,5 @@
 ﻿<h2>OK</h2>
+<p>This page will be redirected to home page in 3 seconds.</p>
 
 @section Scripts {
     <script>
@@ -36,6 +37,10 @@
 
             // Start the connection process
             startConnection();
+
+            setTimeout(function () {
+                window.location.href = '@Url.Action("Index", "Home")';
+            }, 3000);
         });
     </script>
 }

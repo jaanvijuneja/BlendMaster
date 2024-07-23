@@ -36,6 +36,36 @@ namespace WebApplication2.Controllers
         }
 
         [HttpPost]
+        public IActionResult AddQuantity(CartItem item)
+        {
+            var cart = HttpContext.Session.GetObject<List<CartItem>>("Cart");
+            var itemToUpdate = cart.FirstOrDefault(i => i.ProductId == item.ProductId);
+
+            if (itemToUpdate != null)
+            {
+                itemToUpdate.Quantity = item.Quantity + 1;
+                HttpContext.Session.SetObject("Cart", cart);
+            }
+
+            return RedirectToAction("Index", "Cart");
+        }
+
+        [HttpPost]
+        public IActionResult SubtractQuantity(CartItem item)
+        {
+            var cart = HttpContext.Session.GetObject<List<CartItem>>("Cart");
+            var itemToUpdate = cart.FirstOrDefault(i => i.ProductId == item.ProductId);
+
+            if (itemToUpdate != null && item.Quantity > 1)
+            {
+                itemToUpdate.Quantity = item.Quantity - 1;
+                HttpContext.Session.SetObject("Cart", cart);
+            }
+
+            return RedirectToAction("Index", "Cart");
+        }
+
+        [HttpPost]
         public IActionResult RemoveItem(CartItem item)
         {
             var cart = HttpContext.Session.GetObject<List<CartItem>>("Cart");

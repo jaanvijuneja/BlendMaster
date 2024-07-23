@@ -104,7 +104,7 @@ namespace WebApplication2.Controllers
                     .Join(_context.Product,
                         od => od.ProductId,
                         p => p.ProductId,
-                        (od, p) => new { p.ProductName, od.Quantity })
+                        (od, p) => new { p.ProductName, od.Quantity })?
                     .ToDictionary(
                         x => x.ProductName,
                         x => x.Quantity);

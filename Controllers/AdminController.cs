@@ -138,6 +138,8 @@ namespace WebApplication2.Controllers
             _context.CustomerOrder.Update(order);
             _context.SaveChanges();
 
+            CreateBill(id);
+
             return RedirectToAction("OngoingOrders");
         }
 
@@ -158,9 +160,32 @@ namespace WebApplication2.Controllers
             return RedirectToAction("OngoingOrders");
         }
 
-        public IActionResult CloseOrder()
+        private void CreateBill(Guid id)
         {
-            return View();
+            CustomerOrder order = _context.CustomerOrder.Find(id);
+            Bill bill = new Bill()
+            {
+                BillId = Guid.NewGuid(),
+                OrderId = order.OrderId,
+                TableId = order.TableId,
+                BillDate = DateTime.Now,
+                TotalAmount = order.Total,
+                Tax = order.Total * 0.13m,
+            };
+
+            _context.Bill.Add(bill);
+            _context.SaveChanges();
+        }
+
+        public IActionResult BillDetail(Guid id)
+        {
+            Bill bill = _context.Bill.FirstOrDefault(b => b.OrderId == id);
+            if (bill == null)
+            {
+                return NotFound();
+            }
+
+            return View(bill);
         }
     }
 }

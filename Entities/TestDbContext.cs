@@ -13,6 +13,7 @@ namespace WebApplication2.Entities
         public DbSet<Recipe> Recipe { get; set; }
         public DbSet<User> User { get; set; }
         public DbSet<Table> Table { get; set; }
+        public DbSet<Bill> Bill { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

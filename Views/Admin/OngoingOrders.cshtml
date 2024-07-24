@@ -37,6 +37,10 @@
                             <span>|</span>
                             <a asp-controller="Admin" asp-action="CancelOrder" asp-route-id="@order.OrderId">cancel</a>
                         }
+                        else if(order.OrderStatus == WebApplication2.Entities.OrderStatusType.Completed)
+                        {
+                            <a asp-controller="Admin" asp-action="BillDetail" asp-route-id="@order.OrderId">bill</a>
+                        }
                     </td>
                 </tr>
             }

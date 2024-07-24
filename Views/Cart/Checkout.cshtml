@@ -14,7 +14,7 @@
                     console.log("Connected");
 
                     // Now that the connection is established, send the notification
-                    const message = "Your notification message here";
+                    const message = "You have a new incoming order!";
                     await sendNotification(connection, message);
                 } catch (err) {
                     console.error("Connection error:", err.toString());

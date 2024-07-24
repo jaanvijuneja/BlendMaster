@@ -32,23 +32,28 @@
                 }
             </ul>
 
-            <form asp-controller="Admin" asp-action="RecipeDetail" method="post">
+            <form class="d-flex" asp-controller="Admin" asp-action="RecipeDetail" method="post" id="statusForm">
                 <input class="d-none" asp-for="RecipeId" value="@Model.RecipeId" />
                 <input class="d-none" asp-for="Tags" />
                 <h5>Change status to:</h5>
-                <select asp-for="Status">
-                    <option>@RecipeStatusType.Testing</option>
-                    <option>@RecipeStatusType.Rejected</option>
-                    <option>@RecipeStatusType.RolledOut</option>
-                    <option>@RecipeStatusType.Archived</option>
-                </select>
-                <input type="submit" value="Submit" class="btn btn-primary" />
+                @foreach (var status in Enum.GetValues(typeof(RecipeStatusType)))
+                {
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" asp-for="Status" id="status_@status" value="@status" />
+                        <label class="form-check-label" for="status_@status">@status</label>
+                    </div>
+                }
             </form>
 
             <form asp-controller="Admin" asp-action="AddRecipeToMenu" method="post">
-                <input class="d-none" name="id" value="@Model.RecipeId"/>
+                <input class="d-none" name="id" value="@Model.RecipeId" />
                 <label for="categoryName">category</label>
-                <input type="text" name="categoryName" />
+                <select name="categoryName">
+                    @foreach (var category in ViewBag.Categories)
+                    {
+                        <option>@category</option>
+                    }
+                </select>
                 <label for="price">price</label>
                 <input type="text" name="price" />
                 <input type="submit" class="btn btn-danger" value="Add to Menu" />
@@ -56,3 +61,24 @@
         </div>
     </div>
 </div>
+
+@section Scripts {
+    <script>
+        $(function () {
+            $('input[type=radio][name=Status]').change(function () {
+                var form = $('#statusForm');
+                $.ajax({
+                    type: form.attr('method'),
+                    url: form.attr('action'),
+                    data: form.serialize(),
+                    success: function (response) {
+                        console.log('Form submitted successfully');
+                    },
+                    error: function (xhr, status, error) {
+                        console.error('Form submission failed: ' + error);
+                    }
+                });
+            });
+        });
+    </script>
+}

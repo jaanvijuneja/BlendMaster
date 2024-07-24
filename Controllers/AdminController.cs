@@ -35,6 +35,8 @@ namespace WebApplication2.Controllers
                 return NotFound();
             }
 
+            ViewBag.Categories = _context.Category.Select(c => c.CategoryName).ToList();
+
             return View(recipe);
         }
 

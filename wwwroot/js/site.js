@@ -19,4 +19,6 @@ if (userName) {
         });
     });
 }
-
+else {
+    document.getElementById('admin-status').innerHTML = `<p>Bartender <a href="/account/login">login</a> here</p>`
+}

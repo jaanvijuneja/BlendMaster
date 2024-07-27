@@ -27,22 +27,33 @@ namespace WebApplication2.Entities
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public Guid BillId { get; set; }
 
+        [Required]
         public Guid OrderId { get; set; }
         public CustomerOrder? CustomerOrder { get; set; }
 
+        [Required]
         public int TableId { get; set; }
         public Table? Table { get; set; }
 
-        public DateTime BillDate { get; set; } = DateTime.Now;
+        [Required]
+        public DateTime BillDate { get; set; }
 
+        [Required]
+        [Range(0, (double)decimal.MaxValue)]
         public decimal TotalAmount { get; set; }
 
+        [Required]
+        [Range(0, (double)decimal.MaxValue)]
         public decimal Tax { get; set; }
 
+        [Required]
+        [Range(0, (double)decimal.MaxValue)]
         public decimal AmountPaid { get; set; }
 
+        [Required]
         public PaymentMethodType PaymentMethod { get; set; }
 
+        [Required]
         public BillStatusType Status { get; set; }
     }
 }

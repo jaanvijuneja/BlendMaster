@@ -28,10 +28,14 @@ namespace WebApplication2.Entities
 
         private void SeedData(ModelBuilder modelBuilder)
         {
+            var classicCategoryId = Guid.NewGuid();
+            var tropicalCategoryId = Guid.NewGuid();
+            var modernCategoryId = Guid.NewGuid();
+
             modelBuilder.Entity<Category>().HasData(
-                new Category { CategoryId = Guid.NewGuid(), CategoryName = "Classic" },
-                new Category { CategoryId = Guid.NewGuid(), CategoryName = "Tropical" },
-                new Category { CategoryId = Guid.NewGuid(), CategoryName = "Modern" }
+                new Category { CategoryId = classicCategoryId, CategoryName = "Classic" },
+                new Category { CategoryId = tropicalCategoryId, CategoryName = "Tropical" },
+                new Category { CategoryId = modernCategoryId, CategoryName = "Modern" }
             );
 
             modelBuilder.Entity<Table>().HasData(
@@ -49,6 +53,57 @@ namespace WebApplication2.Entities
                     Name = "Bartender",
                     Email = "email@example.com",
                     Password = BCrypt.Net.BCrypt.HashPassword("123")
+                }
+            );
+
+            modelBuilder.Entity<Product>().HasData(
+                new Product
+                {
+                    ProductId = Guid.NewGuid(),
+                    ProductName = "Old Fashioned",
+                    Price = 12.99m,
+                    ProductDescription = "A timeless cocktail featuring bourbon, sugar, and bitters.",
+                    CategoryId = classicCategoryId
+                },
+                new Product
+                {
+                    ProductId = Guid.NewGuid(),
+                    ProductName = "Martini",
+                    Price = 11.99m,
+                    ProductDescription = "A sophisticated cocktail made with gin and vermouth, garnished with an olive.",
+                    CategoryId = classicCategoryId
+                },
+                new Product
+                {
+                    ProductId = Guid.NewGuid(),
+                    ProductName = "Mai Tai",
+                    Price = 10.99m,
+                    ProductDescription = "A tropical mix of rum, lime juice, and orgeat syrup.",
+                    CategoryId = tropicalCategoryId
+                },
+                new Product
+                {
+                    ProductId = Guid.NewGuid(),
+                    ProductName = "Pina Colada",
+                    Price = 9.99m,
+                    ProductDescription = "A creamy blend of rum, pineapple juice, and coconut cream.",
+                    CategoryId = tropicalCategoryId
+                },
+                new Product
+                {
+                    ProductId = Guid.NewGuid(),
+                    ProductName = "Espresso Martini",
+                    Price = 13.49m,
+                    ProductDescription = "A sophisticated mix of vodka, coffee liqueur, and espresso.",
+                    CategoryId = modernCategoryId
+                },
+                new Product
+                {
+                    ProductId = Guid.NewGuid(),
+                    ProductName = "Cucumber Cooler",
+                    Price = 10.49m,
+                    ProductDescription = "A refreshing cocktail with gin, cucumber, lime, and mint.",
+                    CategoryId = modernCategoryId
                 }
             );
         }

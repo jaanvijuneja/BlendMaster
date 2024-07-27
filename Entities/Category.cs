@@ -9,6 +9,8 @@ namespace WebApplication2.Entities
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public Guid CategoryId { get; set; }
 
+        [Required]
+        [StringLength(15, MinimumLength = 1)]
         public string? CategoryName { get; set; }
     }
 }

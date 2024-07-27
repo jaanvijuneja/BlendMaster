@@ -1,5 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Serialization;
 using WebApplication2.Entities;
 using WebApplication2.Models;
 
@@ -186,6 +188,22 @@ namespace WebApplication2.Controllers
             }
 
             return View(bill);
+        }
+
+        public IActionResult Dashboard()
+        {
+            var orders = _context.CustomerOrder.Include(co => co.OrderDetails).ThenInclude(od => od.Product).ToList();
+
+            var settings = new JsonSerializerSettings
+            {
+                ReferenceLoopHandling = ReferenceLoopHandling.Ignore,
+                ContractResolver = new CamelCasePropertyNamesContractResolver() // Optional: use camel case for property names
+            };
+
+            var modelJson = JsonConvert.SerializeObject(orders, settings);
+            ViewBag.OrdersData = modelJson;
+
+            return View();
         }
     }
 }

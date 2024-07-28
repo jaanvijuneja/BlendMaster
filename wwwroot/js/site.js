@@ -1,8 +1,5 @@
-﻿// Please see documentation at https://learn.microsoft.com/aspnet/core/client-side/bundling-and-minification
-// for details on configuring this project to bundle and minify static web assets.
+﻿const userName = localStorage.getItem('loggedUser');
 
-// Write your JavaScript code.
-const userName = localStorage.getItem('loggedUser');
 if (userName) {
     document.getElementById('admin-status').innerHTML = `<p>Welcome, ${userName}! <a href="/account/logout">log out</a></p>`
 

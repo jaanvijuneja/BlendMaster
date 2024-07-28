@@ -16,6 +16,14 @@
       "files": [
         "dist/chart.js"
       ]
+    },
+    {
+      "library": "axios@1.7.2",
+      "destination": "wwwroot/js/axios",
+      "files": [
+        "dist/axios.js",
+        "dist/axios.min.js"
+      ]
     }
   ]
 }

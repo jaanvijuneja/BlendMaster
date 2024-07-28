@@ -2,11 +2,14 @@
 using Microsoft.EntityFrameworkCore;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
+using WebApplication2.Attributes;
 using WebApplication2.Entities;
 using WebApplication2.Models;
 
+
 namespace WebApplication2.Controllers
 {
+    [AdminSession]
     public class AdminController : Controller
     {
         private readonly TestDbContext _context;
@@ -179,6 +182,7 @@ namespace WebApplication2.Controllers
             _context.SaveChanges();
         }
 
+        [HttpGet]
         public IActionResult BillDetail(Guid id)
         {
             Bill bill = _context.Bill.FirstOrDefault(b => b.OrderId == id);
@@ -188,6 +192,25 @@ namespace WebApplication2.Controllers
             }
 
             return View(bill);
+        }
+
+        [HttpPost]
+        public IActionResult BillDetail(Bill bill)
+        {
+            Bill billToUpdate = _context.Bill.FirstOrDefault(b => b.BillId == bill.BillId);
+            if (billToUpdate == null)
+            {
+                return NotFound();
+            }
+
+            billToUpdate.AmountPaid = bill.AmountPaid;
+            billToUpdate.PaymentMethod = bill.PaymentMethod;
+            billToUpdate.Status = bill.Status;
+
+            _context.Bill.Update(billToUpdate);
+            _context.SaveChanges();
+
+            return View(billToUpdate);
         }
 
         public IActionResult Dashboard()

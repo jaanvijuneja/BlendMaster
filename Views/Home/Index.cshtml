@@ -32,13 +32,35 @@
 @section Scripts {
     <script>
         $(function () {
-            const userName = localStorage.getItem('loggedUser');
+            let userName = localStorage.getItem('loggedUser');
+
             if (userName) {
                 const adminLink = document.createElement("a");
                 adminLink.href = "admin/index";
                 adminLink.textContent = "Go to admin panel";
                 document.getElementById("welcome-area").appendChild(adminLink);
             }
+        })
+
+        $(function () {
+            let token = localStorage.getItem('jwtToken');
+
+            fetch('account/validatetoken', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${token}`
+                },
+                body: JSON.stringify({ token })
+            })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        console.log('success')
+                    } else {
+                        console.log('fail')
+                    }
+                })
         })
     </script>
 }

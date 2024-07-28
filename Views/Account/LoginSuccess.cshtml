@@ -6,8 +6,23 @@
         $(function () {
             localStorage.setItem('loggedUser', '@TempData["UserName"]');
             localStorage.setItem('jwtToken', '@TempData["Token"]');
-            setTimeout(function () {
-                window.location.href = '@Url.Action("Index", "Admin")';
+
+            function redirectToDashboard() {
+                api.get('@Url.Action("Index", "Admin")')
+                    .then(response => {
+                        if (response.status === 200) {
+                            document.body.innerHTML = response.data;
+                        } else {
+                            console.error('Failed to load the admin page');
+                        }
+                    })
+                    .catch(error => {
+                        console.error('Error loading admin page:', error);
+                    });
+            }
+
+            setTimeout(() => {
+                window.location.href = '@Url.Action("Index", "Home")';
             }, 2000);
         });
     </script>

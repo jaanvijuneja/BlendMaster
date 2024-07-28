@@ -1,5 +1,9 @@
-﻿<h2>OK</h2>
-<p>This page will be redirected to home page in 3 seconds.</p>
+﻿<div class="container text-center mt-5" id="welcome-area">
+    <h1>Thank you for your order!</h1>
+    <p>Your drinks will be brought to your table shortly.</p>
+    <p>You can pay your bill after enjoying your drinks. A member of our team will assist you with the payment at the reception.</p>
+    <h2>Your Table Number is: <strong>@ViewBag.TableId</strong></h2>
+</div>
 
 @section Scripts {
     <script>
@@ -43,4 +47,22 @@
             }, 3000);
         });
     </script>
+}
+
+@section Styles {
+    <style>
+        body {
+            background: url('/images/background_home.JPG') no-repeat center center fixed;
+            background-size: cover;
+        }
+
+        #welcome-area {
+            text-align: center;
+            padding: 50px;
+            background: rgba(255, 255, 255, 0.8); /* Semi-transparent white background */
+            border-radius: 10px;
+            max-width: 600px;
+            margin: 100px auto;
+        }
+    </style>
 }

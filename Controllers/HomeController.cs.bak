@@ -19,11 +19,6 @@ namespace WebApplication2.Controllers
 
         public IActionResult Index()
         {
-            return View();
-        }
-
-        public IActionResult Table()
-        {
             var model = _testDbContext.Table.ToList();
             var existingTableId = HttpContext.Session.GetObject<int>("TableId");
 

@@ -4,8 +4,6 @@
     ViewData["Title"] = "ChatBot";
 }
 
-@await Html.PartialAsync("_BannerPartial", "Chat")
-<br />
 <div class="container">
     <form class="form-group" asp-controller="Chat" asp-action="Index" method="post">
         <div class="d-flex">
@@ -14,7 +12,11 @@
         </div>
         <br />
         <div class="d-flex">
-            <h6>Hint: "Give me a recipe with strawberries and red wine."</h6>
+            <button class="btn btn-primary disabled">Give me a recipe of one of most popular drinks.</button>
+            &nbsp&nbsp&nbsp
+            <button class="btn btn-primary disabled">Can you tell me how to make clear ice cubes for drinks?</button>
+            &nbsp&nbsp&nbsp
+            <button class="btn btn-primary disabled">Please store this recipe in my database.</button>
         </div>
     </form>
     <div id="chat-box" class="chat-box rounded p-3 mb-3" style="max-height: 400px; overflow-y: auto;">
@@ -22,19 +24,9 @@
     </div>
     @if (!string.IsNullOrEmpty(Model.BotResponse))
     {
-        <form asp-controller="Chat" asp-action="SaveResponse" method="post" onsubmit="confirmSubmission()">
+        <form asp-controller="Chat" asp-action="SaveResponse" method="post">
             <input type="hidden" asp-for="BotResponse" />
             <button class="btn btn-secondary mt-3" type="submit">Save this recipe</button>
         </form>
     }
 </div>
-
-@section Scripts {
-    <script>
-        function confirmSubmission() {
-            if (!localStorage.getItem('loggedUser')) {
-                return confirm("Are you sure you want to send this recipe to the bartender?\n\nNote: It will take some time to review the recipe and make it available on the menu.");
-            }
-        }
-    </script>
-}

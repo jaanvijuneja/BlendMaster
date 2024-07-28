@@ -1,11 +1,15 @@
 ﻿@model LoginModel
 
+@{
+    ViewData["Title"] = "Login";
+}
+
 <div class="container mt-5">
     <div class="row justify-content-center">
         <div class="col-md-6">
             <div class="card">
                 <div class="card-header text-center">
-                    <h4>Login as Bartender</h4>
+                    <h4>Log in as Manager</h4>
                 </div>
                 <div class="card-body">
                     <form asp-action="Login" method="post">
@@ -28,11 +32,14 @@
     </div>
 </div>
 
-@section Styles {
-    <style>
-        body {
-            background: url('/images/background_home.JPG') no-repeat center center fixed;
-            background-size: cover;
-        }
-    </style>
-}
+<style>
+
+    body {
+        margin: 0;
+        padding: 0;
+        font-family: Arial, sans-serif;
+        background: url('/images/background_home.JPG') no-repeat center center fixed;
+        background-size: cover;
+    }
+
+</style>

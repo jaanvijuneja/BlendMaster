@@ -1,5 +1,5 @@
 ﻿<h3>You have successfully logged in.</h3>
-<p>You will be redirected to the dashboard shortly.</p>
+<p>You will be redirected to the homepage shortly.</p>
 
 @section Scripts {
     <script>

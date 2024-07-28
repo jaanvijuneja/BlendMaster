@@ -1,26 +1,44 @@
-﻿@model List<WebApplication2.Entities.Table>
-
-@{
-    ViewData["Title"] = "Home Page";
+﻿@{
+    ViewData["title"] = "Home Page";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Blend Master</h1>
-    @if(ViewData["TableId"] == null)
-    {
-        <form asp-controller="Home" asp-action="SelectTable" method="post">
-            <select name="id">
-                @foreach (var table in Model)
-                {
-                    <option value="@table.TableId">@table.TableName</option>
-                }
-            </select>
-            <input type="submit" value="Submit" />
-        </form>
-    }
-    else
-    {
-        <h4>Welcome, customer in table @ViewData["TableId"]!</h4>
-        <a asp-controller="Menu" asp-action="Index">Check our menu</a>
-    }
+<div class="container" id="welcome-area">
+    <h1>BlendMaster</h1>
+    <p>Make an order or discover new and exciting drink recipes through our chatbot!</p>
+
+    <a href="@Url.Action("Table", "Home")" class="btn btn-primary">Choose Your Table</a>
+    <a href="@Url.Action("Index", "Chat")" class="btn btn-secondary">Chatbot</a>
+    <br />
 </div>
+
+@section Styles {
+    <style>
+        body {
+            background: url('/images/background_home.JPG') no-repeat center center fixed;
+            background-size: cover;
+        }
+
+        #welcome-area {
+            text-align: center;
+            padding: 50px;
+            background: rgba(255, 255, 255, 0.8); /* Semi-transparent white background */
+            border-radius: 10px;
+            max-width: 600px;
+            margin: 100px auto;
+        }
+    </style>
+}
+
+@section Scripts {
+    <script>
+        $(function () {
+            const userName = localStorage.getItem('loggedUser');
+            if (userName) {
+                const adminLink = document.createElement("a");
+                adminLink.href = "admin/index";
+                adminLink.textContent = "Go to admin panel";
+                document.getElementById("welcome-area").appendChild(adminLink);
+            }
+        })
+    </script>
+}

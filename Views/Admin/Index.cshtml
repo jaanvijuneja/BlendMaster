@@ -1,14 +1,14 @@
-﻿@{
-    ViewData["Title"] = "Admin Page";
-}
+﻿@await Html.PartialAsync("_BannerPartial", "Menu")
 
 <div class="text-center">
     <h1 class="display-4">Blend Master</h1>
-    <a asp-controller="Chat" asp-action="Index">Try our chatbot</a>
-    <br />
-    <a asp-controller="Admin" asp-action="Recipes">Check our recipes</a>
-    <br />
-    <a asp-controller="Menu" asp-action="Index">Check our menu</a>
-    <br />
-    <a asp-controller="Admin" asp-action="OngoingOrders">Check orders</a>
+    <div class="d-flex flex-column align-items-center my-3">
+        <div class="w-50">
+            @Html.ActionLink("Try our chatbot", "Index", "Chat", null, new { @class = "btn btn-primary btn-lg d-block my-2" })
+            @Html.ActionLink("Check our recipes", "Recipes", "Admin", null, new { @class = "btn btn-secondary btn-lg d-block my-2" })
+            @Html.ActionLink("Check our menu", "Index", "Menu", null, new { @class = "btn btn-success btn-lg d-block my-2" })
+            @Html.ActionLink("Check orders", "OngoingOrders", "Admin", null, new { @class = "btn btn-info btn-lg d-block my-2" })
+            @Html.ActionLink("Check dashboard", "Dashboard", "Admin", null, new { @class = "btn btn-warning btn-lg d-block my-2" })
+        </div>
+    </div>
 </div>

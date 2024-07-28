@@ -33,27 +33,25 @@
     <!-- Product List (Right Side) -->
     <div class="col-md-9">
         <h3>Products</h3>
-        <div class="row row-cols-1 row-cols-md-2 g-4">
-            @foreach (var product in Model.Products)
-            {
-                var isInCart = cartItems.Contains(product.ProductId);
-                var bgClass = isInCart ? "bg-success" : "";
-                <div class="col">
-                    <div class="card h-100 d-flex flex-row">
-                        <img src="./images/TestImg.png" class="card-img-left" alt="@product.ProductName" style="height: 130px; width: 130px; object-fit: cover;">
-                        <div class="d-flex flex-column justify-content-between w-100">
-                            <div class="card-body">
-                                <h5 class="card-title">@product.ProductName</h5>
-                                <p class="card-text">@product.ProductDescription</p>
-                            </div>
-                        </div>
-                        <div class="card-footer d-flex flex-column align-items-stretch justify-content-evenly">
-                            <button class="btn btn-outline-secondary btn-sm @bgClass" onclick="add('@product.ProductId', this)">&#x2713</button>
+        @foreach (var product in Model.Products)
+        {
+            var isInCart = cartItems.Contains(product.ProductId);
+            var bgClass = isInCart ? "bg-success" : "";
+            <div class="col">
+                <div class="card h-100 d-flex flex-row">
+                    <img src="./images/TestImg.png" class="card-img-left" alt="@product.ProductName" style="height: 130px; width: 130px; object-fit: cover;">
+                    <div class="d-flex flex-column justify-content-between w-100">
+                        <div class="card-body">
+                            <h5 class="card-title">@product.ProductName</h5>
+                            <p class="card-text">@product.ProductDescription</p>
                         </div>
                     </div>
+                    <div class="card-footer d-flex flex-column align-items-stretch justify-content-evenly">
+                        <button class="btn btn-outline-secondary btn-sm @bgClass" onclick="add('@product.ProductId', this)">&#x2713</button>
+                    </div>
                 </div>
-            }
-        </div>
+            </div>
+        }
     </div>
 </div>
 

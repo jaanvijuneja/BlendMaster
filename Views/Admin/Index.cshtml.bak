@@ -1,0 +1,37 @@
+﻿@{
+    ViewData["Title"] = "Admin Page";
+}
+<div class="bar-image">
+    <!-- Add your bar image here -->
+    <img src="~/images/down_glasses.JPG" alt="Bar Image" class="img-fluid w-100" />
+</div>
+<div class="text-center">
+    <h1 class="display-4">Blend Master</h1>
+    <a asp-controller="Chat" asp-action="Index">Try our chatbot</a>
+    <br />
+    <a asp-controller="Admin" asp-action="Recipes">Check our recipes</a>
+    <br />
+    <a asp-controller="Menu" asp-action="Index">Check our menu</a>
+    <br />
+    <a asp-controller="Admin" asp-action="OngoingOrders">Check orders</a>
+</div>
+<style>
+
+    .bar-image {
+        position: relative;
+        width: 100%;
+        height: 200px;
+        overflow: hidden;
+    }
+
+        .bar-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+    .list-group-item {
+        font-size: 1.5rem;
+        margin: 10px 0;
+    }
+</style>

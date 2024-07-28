@@ -106,13 +106,15 @@ namespace WebApplication2.Controllers
                 total += detail.UnitPrice * detail.Quantity;
             }
 
+            var tableId = HttpContext.Session.GetObject<int>("TableId");
+
             CustomerOrder order = new CustomerOrder()
             {
                 CreatedDate = DateTime.Today,
                 OrderId = orderId,
                 Total = total,
                 OrderStatus = OrderStatusType.Preparing,
-                TableId = HttpContext.Session.GetObject<int>("TableId")
+                TableId = tableId
             };
 
             _testDbContext.CustomerOrder.Add(order);
@@ -120,6 +122,8 @@ namespace WebApplication2.Controllers
 
             HttpContext.Session.Clear();
             HttpContext.Session.Remove("Cart");
+
+            ViewBag.TableId = tableId;
 
             return View();
         }

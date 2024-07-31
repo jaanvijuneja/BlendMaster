@@ -14,11 +14,13 @@ namespace WebApplication2.Controllers
     {
         private readonly TokenService _tokenService;
         private readonly TestDbContext _testDbContext;
+        private readonly IConfiguration _configuration;
 
-        public AccountController(TokenService tokenService, TestDbContext testDbContext)
+        public AccountController(TokenService tokenService, TestDbContext testDbContext, IConfiguration configuration)
         {
             _tokenService = tokenService;
             _testDbContext = testDbContext;
+            _configuration = configuration;
         }
 
         [HttpGet]
@@ -57,9 +59,12 @@ namespace WebApplication2.Controllers
         [HttpPost]
         public IActionResult ValidateToken([FromBody] TokenRequest request)
         {
-            if (ValidateJwtToken(request.Token, out var principal))
+            Console.WriteLine(request.Token);
+            var result = ValidateJwtToken(request.Token);
+            Console.WriteLine(result);
+
+            if (result)
             {
-                // Create a session for the admin
                 HttpContext.Session.SetObject("AdminSession", "true");
                 return Ok(new { success = true });
             }
@@ -85,23 +90,24 @@ namespace WebApplication2.Controllers
             return View();
         }
 
-        private bool ValidateJwtToken(string token, out ClaimsPrincipal principal)
+        private bool ValidateJwtToken(string token)
         {
-            principal = null;
+            var tokenHandler = new JwtSecurityTokenHandler();
+            var key = Encoding.ASCII.GetBytes(_configuration["JWT_Secret"]);
+
+            var validationParameters = new TokenValidationParameters
+            {
+                ValidateIssuerSigningKey = true,
+                IssuerSigningKey = new SymmetricSecurityKey(key),
+                ValidateIssuer = false,
+                ValidateAudience = false,
+                ValidateLifetime = false
+            };
+
             try
             {
-                var tokenHandler = new JwtSecurityTokenHandler();
-                var key = Encoding.ASCII.GetBytes("A4m3Dd2UBehUbSe95CIFyNI6ZJyHkV+a9H1dkElCALk=");
-
-                var validationParameters = new TokenValidationParameters
-                {
-                    ValidateIssuerSigningKey = true,
-                    IssuerSigningKey = new SymmetricSecurityKey(key),
-                    ValidateIssuer = false,
-                    ValidateAudience = false
-                };
-
-                principal = tokenHandler.ValidateToken(token, validationParameters, out var validatedToken);
+                Console.WriteLine(token);
+                tokenHandler.ValidateToken(token, validationParameters, out var validatedToken);
                 return true;
             }
             catch
@@ -116,3 +122,4 @@ namespace WebApplication2.Controllers
         public string? Token { get; set; }
     }
 }
+

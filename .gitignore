@@ -4,9 +4,6 @@
 bin/
 obj/
 
-# Generated migration files
-Migrations/
-
 # Development configuration
 appsettings.Development.json
 

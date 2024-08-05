@@ -8,7 +8,7 @@ using WebApplication2.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
-var connectionString = builder.Configuration.GetConnectionString("TestDb");
+var connectionString = builder.Configuration.GetConnectionString("TestDbContext");
 builder.Services.AddDbContext<TestDbContext>(options => options.UseSqlServer(connectionString));
 
 // Add services to the container.
@@ -52,6 +52,13 @@ if (!app.Environment.IsDevelopment())
 {
     app.UseExceptionHandler("/Home/Error");
 }
+
+using (var scope = app.Services.CreateScope())
+{
+    var context = scope.ServiceProvider.GetRequiredService<TestDbContext>();
+    context.Database.Migrate();
+}
+
 app.UseStaticFiles();
 
 app.UseRouting();

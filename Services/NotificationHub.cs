@@ -6,7 +6,7 @@ namespace WebApplication2.Services
     public class NotificationHub : Hub
     {
         // Dictionaries to store connection ids by role
-        private static ConcurrentDictionary<string, string> Managers = new ConcurrentDictionary<string, string>();
+        private static ConcurrentDictionary<string, string> Administrators = new ConcurrentDictionary<string, string>();
         private static ConcurrentDictionary<string, string> Customers = new ConcurrentDictionary<string, string>();
 
         // Method to handle connections and assign roles
@@ -15,9 +15,9 @@ namespace WebApplication2.Services
             // Assume roles are assigned via query string parameters for simplicity
             var role = Context.GetHttpContext().Request.Query["role"];
 
-            if (role == "manager")
+            if (role == "administrator")
             {
-                Managers.TryAdd(Context.ConnectionId, Context.ConnectionId);
+                Administrators.TryAdd(Context.ConnectionId, Context.ConnectionId);
             }
             else if (role == "customer")
             {
@@ -30,7 +30,7 @@ namespace WebApplication2.Services
         // Method to handle disconnections and remove roles
         public override Task OnDisconnectedAsync(Exception exception)
         {
-            Managers.TryRemove(Context.ConnectionId, out _);
+            Administrators.TryRemove(Context.ConnectionId, out _);
             Customers.TryRemove(Context.ConnectionId, out _);
 
             return base.OnDisconnectedAsync(exception);
@@ -39,9 +39,9 @@ namespace WebApplication2.Services
         // Method for customers to send notifications
         public Task SendNotification(string message)
         {
-            foreach (var manager in Managers)
+            foreach (var administrator in Administrators)
             {
-                Clients.Client(manager.Key).SendAsync("notify", message);
+                Clients.Client(administrator.Key).SendAsync("notify", message);
             }
 
             return Task.CompletedTask;

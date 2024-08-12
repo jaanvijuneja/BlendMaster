@@ -11,3 +11,7 @@ appsettings.Development.json
 appsettings.json
 
 .vs/
+.idea/
+
+**/.DS_Store
+**/Folder.DotSettings.user

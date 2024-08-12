@@ -1,15 +1,14 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
-using WebApplication2.Attributes;
 using WebApplication2.Entities;
 using WebApplication2.Models;
 
-
 namespace WebApplication2.Controllers
 {
-    [AdminSession]
+    [Authorize(Roles = "Administrator")]
     public class AdminController : Controller
     {
         private readonly TestDbContext _context;

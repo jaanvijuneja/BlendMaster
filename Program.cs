@@ -1,15 +1,26 @@
-using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.IdentityModel.Tokens;
 using OpenAI_API;
-using System.Text;
+using Microsoft.AspNetCore.Identity;
 using WebApplication2.Entities;
 using WebApplication2.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
 var connectionString = builder.Configuration.GetConnectionString("TestDbContext");
-builder.Services.AddDbContext<TestDbContext>(options => options.UseSqlServer(connectionString));
+builder.Services.AddDbContext<TestDbContext>(options => 
+    options.UseSqlServer(connectionString, sqlServerOptionsAction: sqlOptions =>
+    {
+        sqlOptions.EnableRetryOnFailure(
+            maxRetryCount:2,
+            maxRetryDelay: TimeSpan.FromSeconds(30),
+            errorNumbersToAdd:null
+        );
+    })
+);
+
+builder.Services.AddIdentity<IdentityUser, IdentityRole>()
+    .AddEntityFrameworkStores<TestDbContext>()
+    .AddDefaultTokenProviders();
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
@@ -26,37 +37,45 @@ builder.Services.AddSingleton<OpenAIService>();
 
 builder.Services.AddSignalR();
 
-var jwtSrcret = builder.Configuration.GetSection("JWT_Secret").Value;
-builder.Services.AddSingleton(new TokenService(jwtSrcret));
-
-var key = Encoding.ASCII.GetBytes(jwtSrcret);
-builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
-    .AddJwtBearer(options =>
-    {
-        options.RequireHttpsMetadata = false;
-        options.SaveToken = true;
-        options.TokenValidationParameters = new TokenValidationParameters
-        {
-            ValidateIssuerSigningKey = true,
-            IssuerSigningKey = new SymmetricSecurityKey(key),
-            ValidateIssuer = false,
-            ValidateAudience = false,
-            ValidateLifetime = false
-        };
-    });
-
 var app = builder.Build();
+
+using (var scope = app.Services.CreateScope())
+{
+    // This is to make sure the database exists before connection.
+    var context = scope.ServiceProvider.GetRequiredService<TestDbContext>();
+    context.Database.Migrate();
+    
+    var roleManager = scope.ServiceProvider.GetRequiredService<RoleManager<IdentityRole>>();
+    var userManager = scope.ServiceProvider.GetRequiredService<UserManager<IdentityUser>>();
+
+    string[] roleNames = { "Administrator", "Customer" };
+
+    foreach (var roleName in roleNames)
+    {
+        if (!await roleManager.RoleExistsAsync(roleName))
+        {
+            await roleManager.CreateAsync(new IdentityRole(roleName));
+        }
+    }
+
+    var adminEmail = "admin@admin.com";
+    var adminPassword = "Admin@123";
+    
+    if (await userManager.FindByEmailAsync(adminEmail) == null)
+    {
+        var adminUser = new IdentityUser { UserName = adminEmail, Email = adminEmail };
+        var result = await userManager.CreateAsync(adminUser, adminPassword);
+        if (result.Succeeded)
+        {
+            await userManager.AddToRoleAsync(adminUser, "Administrator");
+        }
+    }
+}
 
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
 {
     app.UseExceptionHandler("/Home/Error");
-}
-
-using (var scope = app.Services.CreateScope())
-{
-    var context = scope.ServiceProvider.GetRequiredService<TestDbContext>();
-    context.Database.Migrate();
 }
 
 app.UseStaticFiles();

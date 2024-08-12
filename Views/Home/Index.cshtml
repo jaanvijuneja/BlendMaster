@@ -28,36 +28,3 @@
         }
     </style>
 }
-
-@section Scripts {
-    <script>
-        $(function () {
-            let userName = localStorage.getItem('loggedUser');
-            let token = localStorage.getItem('jwtToken');
-
-            if (userName) {
-                const adminLink = document.createElement("a");
-                adminLink.href = "admin/index";
-                adminLink.textContent = "Go to admin panel";
-                document.getElementById("welcome-area").appendChild(adminLink);
-            }
-
-            fetch('account/validatetoken', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Authorization': `Bearer ${token}`
-                },
-                body: JSON.stringify({ token })
-            })
-                .then(response => response.json())
-                .then(data => {
-                    if (data.success) {
-                        console.log('success')
-                    } else {
-                        console.log('fail')
-                    }
-                })
-        })
-    </script>
-}

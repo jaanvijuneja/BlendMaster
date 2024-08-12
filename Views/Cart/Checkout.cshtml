@@ -10,7 +10,7 @@
         $(function () {
             async function startConnection() {
                 const connection = new signalR.HubConnectionBuilder()
-                    .withUrl("/notificationHub?role=customer") // or role=manager
+                    .withUrl("/notificationHub?role=customer") // or role=administrator
                     .build();
 
                 try {

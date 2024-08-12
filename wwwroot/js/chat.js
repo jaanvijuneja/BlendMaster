@@ -1,4 +1,6 @@
-﻿// Establish connection to the hub
+﻿//WIP
+
+// Establish connection to the hub
 var chatConnection = new signalR.HubConnectionBuilder().withUrl("/chatHub").build();
 
 //Disable the send button until connection is established.

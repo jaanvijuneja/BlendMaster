@@ -21,6 +21,7 @@ FROM publish AS ef-migration
 WORKDIR /app/publish
 RUN dotnet tool install --global dotnet-ef
 ENV PATH="$PATH:/root/.dotnet/tools"
+RUN dotnet ef migrations add Initial
 RUN dotnet ef database update
 
 FROM base AS final

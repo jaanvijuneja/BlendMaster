@@ -12,7 +12,7 @@ using WebApplication2.Entities;
 namespace WebApplication2.Migrations
 {
     [DbContext(typeof(TestDbContext))]
-    [Migration("20240805070458_Initial")]
+    [Migration("20240812010139_Initial")]
     partial class Initial
     {
         /// <inheritdoc />
@@ -20,10 +20,208 @@ namespace WebApplication2.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "8.0.6")
+                .HasAnnotation("ProductVersion", "8.0.7")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
+
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
+                {
+                    b.Property<string>("Id")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("ConcurrencyStamp")
+                        .IsConcurrencyToken()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Name")
+                        .HasMaxLength(256)
+                        .HasColumnType("nvarchar(256)");
+
+                    b.Property<string>("NormalizedName")
+                        .HasMaxLength(256)
+                        .HasColumnType("nvarchar(256)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("NormalizedName")
+                        .IsUnique()
+                        .HasDatabaseName("RoleNameIndex")
+                        .HasFilter("[NormalizedName] IS NOT NULL");
+
+                    b.ToTable("AspNetRoles", (string)null);
+                });
+
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("ClaimType")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ClaimValue")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("RoleId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("RoleId");
+
+                    b.ToTable("AspNetRoleClaims", (string)null);
+                });
+
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUser", b =>
+                {
+                    b.Property<string>("Id")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<int>("AccessFailedCount")
+                        .HasColumnType("int");
+
+                    b.Property<string>("ConcurrencyStamp")
+                        .IsConcurrencyToken()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Email")
+                        .HasMaxLength(256)
+                        .HasColumnType("nvarchar(256)");
+
+                    b.Property<bool>("EmailConfirmed")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("LockoutEnabled")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTimeOffset?>("LockoutEnd")
+                        .HasColumnType("datetimeoffset");
+
+                    b.Property<string>("NormalizedEmail")
+                        .HasMaxLength(256)
+                        .HasColumnType("nvarchar(256)");
+
+                    b.Property<string>("NormalizedUserName")
+                        .HasMaxLength(256)
+                        .HasColumnType("nvarchar(256)");
+
+                    b.Property<string>("PasswordHash")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("PhoneNumber")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("PhoneNumberConfirmed")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("SecurityStamp")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("TwoFactorEnabled")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("UserName")
+                        .HasMaxLength(256)
+                        .HasColumnType("nvarchar(256)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("NormalizedEmail")
+                        .HasDatabaseName("EmailIndex");
+
+                    b.HasIndex("NormalizedUserName")
+                        .IsUnique()
+                        .HasDatabaseName("UserNameIndex")
+                        .HasFilter("[NormalizedUserName] IS NOT NULL");
+
+                    b.ToTable("AspNetUsers", (string)null);
+                });
+
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<string>", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("ClaimType")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ClaimValue")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("UserId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("AspNetUserClaims", (string)null);
+                });
+
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<string>", b =>
+                {
+                    b.Property<string>("LoginProvider")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("ProviderKey")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("ProviderDisplayName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("UserId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("LoginProvider", "ProviderKey");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("AspNetUserLogins", (string)null);
+                });
+
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserRole<string>", b =>
+                {
+                    b.Property<string>("UserId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("RoleId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("UserId", "RoleId");
+
+                    b.HasIndex("RoleId");
+
+                    b.ToTable("AspNetUserRoles", (string)null);
+                });
+
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<string>", b =>
+                {
+                    b.Property<string>("UserId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("LoginProvider")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("Value")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("UserId", "LoginProvider", "Name");
+
+                    b.ToTable("AspNetUserTokens", (string)null);
+                });
 
             modelBuilder.Entity("WebApplication2.Entities.Bill", b =>
                 {
@@ -85,17 +283,17 @@ namespace WebApplication2.Migrations
                     b.HasData(
                         new
                         {
-                            CategoryId = new Guid("48fe2be4-0d0f-44a7-a22d-6c5ecde7cde4"),
+                            CategoryId = new Guid("eb746028-3ebc-45d9-9246-d3a0144123c3"),
                             CategoryName = "Classic"
                         },
                         new
                         {
-                            CategoryId = new Guid("d7ee74db-e0c0-4d5a-b236-51e2ee551b20"),
+                            CategoryId = new Guid("73a8e069-6854-4e93-9d7d-0a5ea5a635db"),
                             CategoryName = "Tropical"
                         },
                         new
                         {
-                            CategoryId = new Guid("bdeb2a78-0127-48c9-b0ec-a69bd6b47d94"),
+                            CategoryId = new Guid("2a8dacf1-a83e-478b-a0cc-1b1b73fa2ceb"),
                             CategoryName = "Modern"
                         });
                 });
@@ -186,48 +384,48 @@ namespace WebApplication2.Migrations
                     b.HasData(
                         new
                         {
-                            ProductId = new Guid("7231940c-d749-4ced-b914-2ef21cccad25"),
-                            CategoryId = new Guid("48fe2be4-0d0f-44a7-a22d-6c5ecde7cde4"),
+                            ProductId = new Guid("9f33d332-0b2c-4493-878d-e948c91246a4"),
+                            CategoryId = new Guid("eb746028-3ebc-45d9-9246-d3a0144123c3"),
                             Price = 12.99m,
                             ProductDescription = "A timeless cocktail featuring bourbon, sugar, and bitters.",
                             ProductName = "Old Fashioned"
                         },
                         new
                         {
-                            ProductId = new Guid("f6788097-baf0-4b8d-adee-77b78b94e5e8"),
-                            CategoryId = new Guid("48fe2be4-0d0f-44a7-a22d-6c5ecde7cde4"),
+                            ProductId = new Guid("f3cfb3b9-eb92-4dcc-b30e-d62d201b4c56"),
+                            CategoryId = new Guid("eb746028-3ebc-45d9-9246-d3a0144123c3"),
                             Price = 11.99m,
                             ProductDescription = "A sophisticated cocktail made with gin and vermouth, garnished with an olive.",
                             ProductName = "Martini"
                         },
                         new
                         {
-                            ProductId = new Guid("593ab29d-3e7b-489c-b0ef-01be3d83fff2"),
-                            CategoryId = new Guid("d7ee74db-e0c0-4d5a-b236-51e2ee551b20"),
+                            ProductId = new Guid("3af14d5f-dd7e-4e09-a2b9-92f5837cf0ac"),
+                            CategoryId = new Guid("73a8e069-6854-4e93-9d7d-0a5ea5a635db"),
                             Price = 10.99m,
                             ProductDescription = "A tropical mix of rum, lime juice, and orgeat syrup.",
                             ProductName = "Mai Tai"
                         },
                         new
                         {
-                            ProductId = new Guid("6b9cb6c0-b4e6-4dcf-9c3b-f625567e74de"),
-                            CategoryId = new Guid("d7ee74db-e0c0-4d5a-b236-51e2ee551b20"),
+                            ProductId = new Guid("04784933-b89b-4dcf-98b7-93293a7edd87"),
+                            CategoryId = new Guid("73a8e069-6854-4e93-9d7d-0a5ea5a635db"),
                             Price = 9.99m,
                             ProductDescription = "A creamy blend of rum, pineapple juice, and coconut cream.",
                             ProductName = "Pina Colada"
                         },
                         new
                         {
-                            ProductId = new Guid("977736eb-aabd-471e-9b14-dc1d108083c4"),
-                            CategoryId = new Guid("bdeb2a78-0127-48c9-b0ec-a69bd6b47d94"),
+                            ProductId = new Guid("8ddda626-45e1-4fc5-8564-7824972d98a9"),
+                            CategoryId = new Guid("2a8dacf1-a83e-478b-a0cc-1b1b73fa2ceb"),
                             Price = 13.49m,
                             ProductDescription = "A sophisticated mix of vodka, coffee liqueur, and espresso.",
                             ProductName = "Espresso Martini"
                         },
                         new
                         {
-                            ProductId = new Guid("242d227f-ee94-4d8a-9e0d-87ef7a65c40b"),
-                            CategoryId = new Guid("bdeb2a78-0127-48c9-b0ec-a69bd6b47d94"),
+                            ProductId = new Guid("2e9b0c06-8539-4c78-a49e-18d55475b70a"),
+                            CategoryId = new Guid("2a8dacf1-a83e-478b-a0cc-1b1b73fa2ceb"),
                             Price = 10.49m,
                             ProductDescription = "A refreshing cocktail with gin, cucumber, lime, and mint.",
                             ProductName = "Cucumber Cooler"
@@ -313,39 +511,55 @@ namespace WebApplication2.Migrations
                         });
                 });
 
-            modelBuilder.Entity("WebApplication2.Entities.User", b =>
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
                 {
-                    b.Property<Guid>("UserId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
+                    b.HasOne("Microsoft.AspNetCore.Identity.IdentityRole", null)
+                        .WithMany()
+                        .HasForeignKey("RoleId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
 
-                    b.Property<string>("Email")
-                        .IsRequired()
-                        .HasMaxLength(256)
-                        .HasColumnType("nvarchar(256)");
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<string>", b =>
+                {
+                    b.HasOne("Microsoft.AspNetCore.Identity.IdentityUser", null)
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
 
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasMaxLength(100)
-                        .HasColumnType("nvarchar(100)");
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<string>", b =>
+                {
+                    b.HasOne("Microsoft.AspNetCore.Identity.IdentityUser", null)
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
 
-                    b.Property<string>("Password")
-                        .IsRequired()
-                        .HasMaxLength(256)
-                        .HasColumnType("nvarchar(256)");
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserRole<string>", b =>
+                {
+                    b.HasOne("Microsoft.AspNetCore.Identity.IdentityRole", null)
+                        .WithMany()
+                        .HasForeignKey("RoleId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
-                    b.HasKey("UserId");
+                    b.HasOne("Microsoft.AspNetCore.Identity.IdentityUser", null)
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
 
-                    b.ToTable("User");
-
-                    b.HasData(
-                        new
-                        {
-                            UserId = new Guid("b18c94b5-8caf-4b8a-a25d-148f6d425b13"),
-                            Email = "email@example.com",
-                            Name = "Bartender",
-                            Password = "$2a$11$pT.kvgXwJ2aksguJ1lb4jOKuBQFbV9MdVp7tJ7OXgDUsteveblGPa"
-                        });
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<string>", b =>
+                {
+                    b.HasOne("Microsoft.AspNetCore.Identity.IdentityUser", null)
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("WebApplication2.Entities.Bill", b =>

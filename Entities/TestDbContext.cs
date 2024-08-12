@@ -1,8 +1,10 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 
 namespace WebApplication2.Entities
 {
-    public class TestDbContext : DbContext
+    public class TestDbContext : IdentityDbContext<IdentityUser>
     {
         public TestDbContext(DbContextOptions<TestDbContext> options) : base(options) { }
 
@@ -11,12 +13,13 @@ namespace WebApplication2.Entities
         public DbSet<Product> Product { get; set; }
         public DbSet<Category> Category { get; set; }
         public DbSet<Recipe> Recipe { get; set; }
-        public DbSet<User> User { get; set; }
         public DbSet<Table> Table { get; set; }
         public DbSet<Bill> Bill { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            base.OnModelCreating(modelBuilder);
+            
             modelBuilder.Entity<CustomerOrder>()
                 .HasMany(co => co.OrderDetails)
                 .WithOne(od => od.CustomerOrder)
@@ -44,16 +47,6 @@ namespace WebApplication2.Entities
                 new Table { TableId = 3, TableName = "Table3" },
                 new Table { TableId = 4, TableName = "Table4" },
                 new Table { TableId = 5, TableName = "Table5" }
-            );
-
-            modelBuilder.Entity<User>().HasData(
-                new User
-                {
-                    UserId = Guid.NewGuid(),
-                    Name = "Bartender",
-                    Email = "email@example.com",
-                    Password = BCrypt.Net.BCrypt.HashPassword("123")
-                }
             );
 
             modelBuilder.Entity<Product>().HasData(
